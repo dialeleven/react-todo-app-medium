@@ -1,0 +1,88 @@
+/* TodoList.css */
+body {
+   margin: 0;
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+     sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+   background-color: #007bff;
+   color: white;
+   border: none;
+   padding: 4px 5px;
+   margin-left: 5px;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+h1 {
+   max-width: 400px;
+   margin: 0 auto; /* Center align the todo list */
+   text-align: center;
+   color: #555;
+   margin-top: 15px;
+   margin-bottom: 10px;
+}
+
+.todo-list {
+   max-width: 400px; /* Adjust max-width to your desired width */
+   margin: 0 auto; /* Center align the todo list */
+ }
+ 
+ .todo-item {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background-color: #f8f9fa;
+   padding: 12px;
+   border-radius: 4px;
+   margin-bottom: 8px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   width: 100%; /* Make todo items take full width within container */
+   max-width: 100%; /* Ensure they do not exceed their container width */
+ }
+ 
+ .todo-item p {
+   flex: 1; /* Take up remaining space */
+   margin: 0;
+   color: #333;
+ }
+ 
+ .todo-item p.completed {
+   text-decoration: line-through;
+   color: #888;
+ }
+
+ .todo-item {
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 8px;
+ }
+ 
+ .todo-item:has(:checked) p {
+   color: #888;
+   text-decoration: line-through;
+ }
+ 
+ .todo-item .delete-button {
+   background-color: #888;
+   color: white;
+   border: none;
+   padding: 6px 12px;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.1s ease;
+ }
+ 
+ .todo-item .delete-button:hover {
+   background-color: #cc0519;
+ }
+ 
+ .todo-item input[type="checkbox"] {
+   margin-right: 12px;
+ }
+ 
