@@ -67,6 +67,21 @@ h1 {
    color: #888;
    text-decoration: line-through;
  }
+
+ .todo-item .edit-button {
+  background-color: #888;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-right: 5px;
+  cursor: pointer;
+  transition: background-color 0.1s ease;
+}
+
+.todo-item .edit-button:hover {
+  background-color: #007cf9bf;
+}
  
  .todo-item .delete-button {
    background-color: #888;
@@ -79,7 +94,7 @@ h1 {
  }
  
  .todo-item .delete-button:hover {
-   background-color: #cc0519;
+   background-color: #f9031b;
  }
  
  .todo-item input[type="checkbox"] {
