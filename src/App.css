@@ -30,17 +30,21 @@ h1 {
 
 .edit-input {
   text-align: left;
-  width: 95%;
+  width: 90%;
   border-radius: 3px; /* Optional: Add rounded corners */
+}
+
+.todo-text {
+   cursor: pointer;
 }
 
 .todo-list {
    max-width: 400px; /* Adjust max-width to your desired width */
    margin: 0 auto; /* Center align the todo list */
    padding-bottom: 30px;
- }
+}
  
- .todo-item {
+   .todo-item {
    display: flex;
    align-items: center;
    justify-content: space-between;
@@ -51,13 +55,13 @@ h1 {
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    width: 100%; /* Make todo items take full width within container */
    max-width: 100%; /* Ensure they do not exceed their container width */
- }
+   }
  
- .todo-item div {
-   flex: 1; /* Take up remaining space */
-   margin: 0;
-   color: #333;
- }
+   .todo-item div {
+      flex: 1; /* Take up remaining space */
+      margin: 0;
+      color: #333;
+   }
  
  .todo-item p.completed {
    text-decoration: line-through;
