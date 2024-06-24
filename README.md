@@ -4,7 +4,16 @@ Built using tutorial sources:
 - https://medium.com/@worachote/building-a-todo-list-app-with-reactjs-a-step-by-step-guide-2c58b9b6c0f5
 - "Master React in 5 Days" by Eric Sarrion
 
-The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. The "Master React" book was used to cover updating/editing a TODO item.
+The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. The "Master React" book was used to cover updating/editing a TODO item. Adding additional functionality from the book or online resources.
+
+**TODO - Completed Items**
+- [x] Edit item
+
+**TODO - Features To Add**
+- [ ] Reorder with drag and drop
+- [ ] Filtering option (show 'All' tasks, 'Completed' and 'Uncompleted')
+- [ ] Due date/time
+- [ ] Store todo list in local storage
 
 # Getting Started with Create React App
 
