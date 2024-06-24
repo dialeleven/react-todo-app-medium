@@ -1,3 +1,11 @@
+# TODO Tutorial 
+
+Built using tutorial sources:
+- https://medium.com/@worachote/building-a-todo-list-app-with-reactjs-a-step-by-step-guide-2c58b9b6c0f5
+- "Master React in 5 Days" by Eric Sarrion
+
+The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. The "Master React" book was used to cover updating/editing a TODO item.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

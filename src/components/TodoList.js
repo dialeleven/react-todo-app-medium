@@ -93,6 +93,18 @@ function TodoList() {
       );
    }
 
+   function updateTask(id, newText) {
+      setTasks(
+         tasks.map(task => {
+            if (task.id === id) {
+               return { ...task, text: newText };
+            } else {
+               return task;
+            }
+         })
+      );
+   }
+
    return (
       <div className="todo-list">
          {tasks.map(task => (
@@ -101,8 +113,12 @@ function TodoList() {
                task={task}
                deleteTask={deleteTask}
                toggleCompleted={toggleCompleted}
+               updateTask={updateTask}
             />
          ))}
+         <div>
+            <input type="checkbox" name="confirm-deletes" id="confirm-deletes" value={true} />Confirm deletions?
+         </div>
          <input type="text" value={text} onChange={e => setText(e.target.value)} />
          <button className="button" onClick={() => addTask(text)}>Add Todo</button>
       </div>
