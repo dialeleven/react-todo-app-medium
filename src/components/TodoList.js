@@ -17,14 +17,9 @@ function TodoList() {
    */
    const [tasks, setTasks] = useState([
       {
-         id: 1,
-         text: "Learn React",
-         completed: true
-      },
-      {
          id: 2,
-         text: "Add edit feature",
-         completed: false
+         text: "Edit item",
+         completed: true
       },
       {
          id: 3,
