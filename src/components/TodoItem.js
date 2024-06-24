@@ -1,16 +1,7 @@
 import React, { useState } from 'react';
 
  
-/**
- * Renders a single todo item with the ability to edit, delete, and mark as completed.
- *
- * @param {Object} props - The properties passed to the component.
- * @param {Object} props.task - The todo item to render.
- * @param {Function} props.deleteTask - The function to delete a todo item.
- * @param {Function} props.toggleCompleted - The function to toggle the completion status of a todo item.
- * @param {Function} props.updateTask - The function to update a todo item's text.
- * @return {JSX.Element} The rendered todo item component.
- */
+
 function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
    // State variable  'editOn' is used to toggle the edit input field when the edit button is clicked
    const [editOn, setEditOn] = useState(false);
@@ -29,6 +20,9 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
    }
 
    function editItem() {
+      // if user blurs off the text input field and clicks the edit button again, don't enable the input field
+      
+
       // Invert the 'editOn' state using !.
       // If 'editOn' is true, set it to false. If 'editOn' is false, set it to true.
       setEditOn(!editOn);
@@ -39,11 +33,20 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
       setEditText(event.target.value);
    }
 
-   function blur() {
-      // update the task's text with the current editText value
+   function saveChanges() {
       updateTask(task.id, editText);
-      // remove the input field by setting editOn to false
       setEditOn(false);
+   }
+
+   // function to handle the 'Enter' key press
+   function handleKeyPress(event) {
+      if (event.key === 'Enter') {
+         saveChanges();
+      }
+   }
+
+   function blur() {
+      saveChanges();
    }
 
    return (
@@ -64,6 +67,8 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
                      className="edit-input" 
                      onChange={saveEdit}
                      onBlur={blur}
+                     onKeyPress={handleKeyPress}
+                     autoFocus
                   />
                </div>
                :
