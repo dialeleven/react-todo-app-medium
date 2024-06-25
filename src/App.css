@@ -44,7 +44,7 @@ h1 {
    padding-bottom: 30px;
 }
  
-   .todo-item {
+.todo-item {
    display: flex;
    align-items: center;
    justify-content: space-between;
@@ -55,26 +55,20 @@ h1 {
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    width: 100%; /* Make todo items take full width within container */
    max-width: 100%; /* Ensure they do not exceed their container width */
-   }
+}
+
+.todo-item div {
+   flex: 1; /* Take up remaining space */
+   margin: 0;
+   color: #333;
+}
  
-   .todo-item div {
-      flex: 1; /* Take up remaining space */
-      margin: 0;
-      color: #333;
-   }
- 
- .todo-item p.completed {
+ .todo-item div.completed {
    text-decoration: line-through;
    color: #888;
  }
-
- .todo-item {
-   display: flex;
-   justify-content: space-between;
-   margin-bottom: 8px;
- }
  
- .todo-item:has(:checked) p {
+ .todo-item:has(:checked) div {
    color: #888;
    text-decoration: line-through;
  }

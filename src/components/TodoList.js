@@ -94,6 +94,7 @@ function TodoList() {
       );
    }
 
+   // Helper function (updateTask) - updates the `text` property of a task by `id` using the `setTasks` function.
    function updateTask(id, newText) {
       setTasks(
          tasks.map(task => {
