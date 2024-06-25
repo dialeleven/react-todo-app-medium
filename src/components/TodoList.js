@@ -40,6 +40,11 @@ function TodoList() {
          id: 6,
          text: "Store todo list in local storage",
          completed: false
+      },
+      {
+         id: 7,
+         text: "Modal add todo item",
+         completed: false
       }
    ]);
 
@@ -109,6 +114,17 @@ function TodoList() {
 
    return (
       <div className="container">
+         <div className="header">
+            <button className="button" onClick={() => addTask(text)}>Add Todo</button>
+            <div className="filter-container">
+               <select className="filter-select">
+                  <option value="All">All</option>
+                  <option value="Checked">Checked</option>
+                  <option value="Unchecked">Unchecked</option>
+               </select>
+            </div>
+         </div>
+         
          <div className="todo-list">
             {tasks.map(task => (
                <TodoItem
@@ -119,7 +135,7 @@ function TodoList() {
                   updateTask={updateTask}
                />
             ))}
-            <input type="text" value={text} onChange={e => setText(e.target.value)} />
+            <input type="text" value={text} className="add-task-input" onChange={e => setText(e.target.value)} />
             <button className="button" onClick={() => addTask(text)}>Add Todo</button>
          </div>
       </div>
