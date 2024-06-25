@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 
- 
+
+/**
+ * Renders a single todo item with the ability to mark it as completed, delete it, and edit its text.
+ *
+ * @param {Object} props - The properties passed to the component.
+ * @param {Object} props.task - The todo item to render.
+ * @param {Function} props.deleteTask - The function to delete a todo item.
+ * @param {Function} props.toggleCompleted - The function to toggle the completion status of a todo item.
+ * @param {Function} props.updateTask - The function to update a todo item's text.
+ * @return {JSX.Element} The rendered todo item.
+ */
 function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
    // State variable  'editOn' is used to toggle the edit input field visibility when the edit button is clicked
    const [editOn, setEditOn] = useState(false);
