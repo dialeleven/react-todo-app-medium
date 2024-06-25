@@ -18,7 +18,7 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
    // State variable  'editText' is used to store the current value of the edit input field
    const [editText, setEditText] = useState(task.text);
 
-   // 
+   // function to toggle the completion status of a todo item
    function handleChange() {
       toggleCompleted(task.id);
    }
@@ -70,6 +70,7 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
             type="checkbox"
             checked={task.completed}
             onChange={handleChange}
+            // * the above code can also be written as an arrow function:
             // onChange={() => toggleCompleted(task.id)}
             onBlur={blur}
          />
