@@ -28,7 +28,7 @@ function TodoList() {
       },
       {
          id: 4,
-         text: "Filtering option (show 'All' tasks, 'Completed' and 'Uncompleted')",
+         text: "Filtering option (show 'All' tasks, 'Completed' and 'Uncompleted'). Make sure long text displays properly not running into the button or checkbox.",
          completed: false
       },
       {
@@ -115,7 +115,7 @@ function TodoList() {
    return (
       <div className="container">
          <div className="header">
-            <button className="button" onClick={() => addTask(text)}>Add Todo</button>
+            <button className="top-add-todo-button" onClick={() => addTask(text)}>Add Todo</button>
             <div className="filter-container">
                <select className="filter-select">
                   <option value="All">All</option>
@@ -136,7 +136,7 @@ function TodoList() {
                />
             ))}
             <input type="text" value={text} className="add-task-input" onChange={e => setText(e.target.value)} />
-            <button className="button" onClick={() => addTask(text)}>Add Todo</button>
+            <button className="bottom-add-todo-button" onClick={() => addTask(text)}>Add Todo</button>
          </div>
       </div>
    );

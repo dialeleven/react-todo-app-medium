@@ -67,7 +67,7 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
             /* if 'editOn' is true (i.e. the edit button is clicked), display the input field, otherwise display the plain text */
             editOn ?
                <div>
-                  <input
+                  <textarea
                   type="text"
                   value={editText}
                      className="edit-input" 
