@@ -28,11 +28,14 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
       setEditOn(!editOn);
    }
 
+   // function to save changes per character typed/pasted when editing a todo item
+   // otherwise when typing, the original value is displayed
    function saveEdit(event) {
       console.log(event.target.value);
       setEditText(event.target.value);
    }
 
+   // function to save edit todo changes
    function saveChanges() {
       updateTask(task.id, editText);
       setEditOn(false);
@@ -45,6 +48,7 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
       }
    }
 
+   // function to handle edit todo input losing focus (i.e. save the changes)
    function blur() {
       saveChanges();
    }
