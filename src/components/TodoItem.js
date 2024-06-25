@@ -19,6 +19,7 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
          deleteTask(task.id);
    }
 
+   // function to display/hide the edit input field
    function editItem() {
       // if user blurs off the text input field and clicks the edit button again, don't enable the input field
       
