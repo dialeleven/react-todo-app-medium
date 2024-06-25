@@ -49,13 +49,19 @@ function TodoList() {
    // The new task object is added to the `tasks` array using the `setTasks` function.
    // Resets the `text` state to an empty string.  
    function addTask(text) {
-      const newTask = {
-         id: Date.now(),
-         text,
-         completed: false
-      };
-      setTasks([...tasks, newTask]);
-      setText('');
+      // if text is not empty, create a new task object
+      if (text !== '') {
+         const newTask = {
+            id: Date.now(),
+            text,
+            completed: false
+         };
+         setTasks([...tasks, newTask]);
+         setText(''); 
+      }
+      else {
+         // alert('Please enter some text');
+      }
    }
 
    /*
@@ -112,9 +118,6 @@ function TodoList() {
                   updateTask={updateTask}
                />
             ))}
-            <div>
-               <input type="checkbox" name="confirm-deletes" id="confirm-deletes" value={true} />Confirm deletions?
-            </div>
             <input type="text" value={text} onChange={e => setText(e.target.value)} />
             <button className="button" onClick={() => addTask(text)}>Add Todo</button>
          </div>
