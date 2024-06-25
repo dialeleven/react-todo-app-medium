@@ -7,7 +7,8 @@ Built using tutorial sources:
 The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. The "Master React" book was used to cover updating/editing a TODO item. Adding additional functionality from the book or online resources.
 
 **TODO - Completed Items**
-- [x] Edit item
+- [x] Edit item (click item to edit, Enter key/blur() to save, Esc key to discard changes)
+- [x] Modal add todo item
 
 **TODO - Features To Add**
 - [ ] Reorder with drag and drop

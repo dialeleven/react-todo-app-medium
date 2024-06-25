@@ -52,10 +52,18 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
       setEditOn(false);
    }
 
-   // function to handle the 'Enter' key press
+   // function to handle keyboard key presses
    function handleKeyPress(event) {
+      // if the 'Enter' key is pressed, save the changes
       if (event.key === 'Enter') {
          saveChanges();
+      }
+
+      // if the 'Escape' key is pressed, invert the 'editOn' state and discard changes
+      if (event.key === 'Escape') {
+         // alert(task.text);
+         setEditText(task.text); // set the 'editText' state to the original value of the todo item
+         setEditOn(!editOn);
       }
    }
 
@@ -84,7 +92,7 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
                      className="edit-input" 
                      onChange={saveEdit}
                      onBlur={blur}
-                     onKeyPress={handleKeyPress}
+                     onKeyDown={handleKeyPress}
                      autoFocus
                   />
                </div>
@@ -104,6 +112,8 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
    );
 }
 
+// Exporting TodoItem component for use in other files.
+// Note: the exported value can be a variable, function, class, or object.
 export default TodoItem;
 
 

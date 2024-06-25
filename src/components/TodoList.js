@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TodoItem from './TodoItem';
+import TodoAddItemModal from './TodoAddItemModal';
 
 function TodoList() {
    /*
@@ -17,38 +18,51 @@ function TodoList() {
    */
    const [tasks, setTasks] = useState([
       {
-         id: 2,
+         id: 1,
          text: "Edit item",
          completed: true
       },
       {
-         id: 3,
+         id: 2,
          text: "Reorder with drag and drop",
          completed: false
       },
       {
-         id: 4,
+         id: 3,
          text: "Filtering option (show 'All' tasks, 'Completed' and 'Uncompleted'). Make sure long text displays properly not running into the button or checkbox.",
-         completed: false
+         completed: true
       },
       {
-         id: 5,
+         id: 4,
          text: "Due date/time",
          completed: false
       },
       {
-         id: 6,
+         id: 5,
          text: "Store todo list in local storage",
+         completed: false
+      },
+      {
+         id: 6,
+         text: "Modal delete todo item",
          completed: false
       },
       {
          id: 7,
          text: "Modal add todo item",
-         completed: false
+         completed: true
       }
    ]);
 
-   const [text, setText] = useState('');
+   // State variable  'text' is used to store the current value of the input field
+   // const [text, setText] = useState('');
+
+   // State variable 'filter' is used to store the current value of the task filter menu (default is 'All')
+   const [filter, setFilter] = useState('All');
+
+   // state variable for "add todo" modal window
+   const [showModal, setShowModal] = useState(false);
+
 
    // Helper function (addTask) - creates a new task object with a unique `id`, `text`, and `completed` property.
    // The new task object is added to the `tasks` array using the `setTasks` function.
@@ -62,7 +76,7 @@ function TodoList() {
             completed: false
          };
          setTasks([...tasks, newTask]);
-         setText(''); 
+         // setText(''); ? used with older "add todo" text input and button combo below the todo list
       }
       else {
          // alert('Please enter some text');
@@ -112,20 +126,48 @@ function TodoList() {
       );
    }
 
+   // Helper function - updates the `filter` state variable with the current value of the filter todo select menu
+   function handleFilterChange(event) {
+      // alert(event.target.value);
+      setFilter(event.target.value);
+   }
+
+   // helper function - returns filtered tasks based on the current value of the filter todo select menu
+   function getFilteredTasks(event) {
+      switch (filter) {
+         case 'tasks-checked':
+           return tasks.filter(task => task.completed);
+         case 'tasks-unchecked':
+           return tasks.filter(task => !task.completed);
+         default:
+           return tasks;
+       }
+   }
+
    return (
       <div className="container">
          <div className="header">
-            <button className="top-add-todo-button" onClick={() => addTask(text)}>Add Todo</button>
+            <button className="top-add-todo-button" onClick={() => setShowModal(true)}>Add Todo</button>
             <div className="filter-container">
-               <select className="filter-select">
-                  <option value="All">All</option>
-                  <option value="Checked">Checked</option>
-                  <option value="Unchecked">Unchecked</option>
+               <select className="filter-select" onChange={handleFilterChange}>
+                  <option value="tasks-all">All</option>
+                  <option value="tasks-checked">Checked</option>
+                  <option value="tasks-unchecked">Unchecked</option>
                </select>
             </div>
          </div>
          
          <div className="todo-list">
+            {getFilteredTasks().map(task => (
+                  <TodoItem
+                     key={task.id}
+                     task={task}
+                     deleteTask={deleteTask}
+                     toggleCompleted={toggleCompleted}
+                     updateTask={updateTask}
+                  />
+            ))}
+            {/* original output of tasks array with no filtering
             {tasks.map(task => (
                <TodoItem
                   key={task.id}
@@ -134,10 +176,17 @@ function TodoList() {
                   toggleCompleted={toggleCompleted}
                   updateTask={updateTask}
                />
-            ))}
+            ))} */}
+            {/*
+            // original "add todo" text input and button combo
             <input type="text" value={text} className="add-task-input" onChange={e => setText(e.target.value)} />
             <button className="bottom-add-todo-button" onClick={() => addTask(text)}>Add Todo</button>
+            */}
+            <button className="add-todo-button-footer" onClick={() => setShowModal(true)}>Add Todo</button>
          </div>
+
+         <TodoAddItemModal
+            showModal={showModal} handleClose={() => setShowModal(false)} addTask={addTask} />
       </div>
    );
 }
