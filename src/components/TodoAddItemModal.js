@@ -5,13 +5,18 @@ function TodoAddItemModal({ showModal, handleClose, addTask }) {
    // State for text input
    const [text, setText] = useState("");
 
-   // State for date/time
+   // State for date/time - default to tomorrow at 9am
    const [dateTime, setDateTime] = useState("");
 
    // Handle form submit
    const handleSubmit = (e) => {
       e.preventDefault();  // Prevent the default form submission
-      addTask({text, dateTime});       // Call the addTask function to add the new task
+
+      
+      // replace the 'T' in the date/time with a space and set the date/time
+      const formattedDateTime = dateTime.replace("T", " ");
+
+      addTask({text, dateTime: formattedDateTime});       // Call the addTask function to add the new task
       setText("");         // Reset the text state to an empty string
       setDateTime("");
       handleClose();

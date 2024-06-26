@@ -25,7 +25,7 @@ function TodoList() {
       },
       {
          id: 2,
-         text: "Adjust date/time on add action",
+         text: "Adjust date/time format on add action",
          completed: false
       },
       {
@@ -47,13 +47,14 @@ function TodoList() {
    ]);
 
    // State variable  'text' is used to store the current value of the input field
-   // const [text, setText] = useState('');
+   const [text, setText] = useState('');
 
    // State variable 'filter' is used to store the current value of the task filter menu (default is 'All')
    const [filter, setFilter] = useState('All');
 
    // state variable for "add todo" modal window
    const [showModal, setShowModal] = useState(false);
+   const [dateTime, setDateTime] = useState('');
 
 
    // Helper function (addTask) - creates a new task object with a unique `id`, `text`, and `completed` property.
@@ -137,6 +138,12 @@ function TodoList() {
        }
    }
 
+   const handleClose = () => {
+      setShowModal(false);
+      setText('');
+      setDateTime('');
+   };
+
    return (
       <div className="container">
          <div className="header">
@@ -179,7 +186,10 @@ function TodoList() {
          </div>
 
          <TodoAddItemModal
-            showModal={showModal} handleClose={() => setShowModal(false)} addTask={addTask} />
+            showModal={showModal}
+            handleClose={handleClose}
+            addTask={addTask}
+         />
       </div>
    );
 }
