@@ -25,11 +25,6 @@ function TodoList() {
       },
       {
          id: 2,
-         text: "Adjust date/time format on add action",
-         completed: false
-      },
-      {
-         id: 3,
          text: "Edit date/time",
          completed: false
       },

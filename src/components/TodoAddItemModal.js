@@ -28,15 +28,23 @@ function TodoAddItemModal({ showModal, handleClose, addTask }) {
          handleSubmit(e);
       }
    }
+   
 
-   // close modal if user clicks outside the modal or presses escape key
+   // modal add item window is open, so add event listeners for click and keydown
    if (showModal) {
       // Add a click event listener to the document and close modal if user clicks outside
       document.addEventListener("click", (e) => {
-         if (e.target.className === "modal-backdrop") {
-            setText("");         // Reset the text state to an empty string
-            setDateTime("");
-            handleClose();
+         switch (e.target.className) {
+            case 'modal-backdrop':     // user clicked outside of modal
+            case 'modal-button-close': // user clicked close button
+               setText("");
+               setDateTime("");
+               handleClose();
+               break;
+            
+            default:
+               // alert(e);
+               break;
          }
       });
 
@@ -87,7 +95,7 @@ function TodoAddItemModal({ showModal, handleClose, addTask }) {
          </div>
          <div className="modal-footer">
             <button className="modal-button" onClick={handleSubmit}>Add</button>
-            <button className="modal-button" onClick={handleClose}>Close</button>
+            <button className="modal-button-close" onClick={handleClose}>Close</button>
          </div>
          </div>
       </div>

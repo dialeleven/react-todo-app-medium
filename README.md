@@ -11,9 +11,10 @@ The Medium.com tutorial covers reading the TODO list, TODO items, creating a new
 - [x] Modal add todo item
 - [x] Filtering option (show 'All' tasks, 'Checked' and 'Unchecked')
 - [x] Modal: Add due date/time
+- [x] Adjust date/time format on add action
+- [x] Modal: close button behavior - clear out text input and date/time input
 
 **TODO - Features To Add**
-- [ ] Adjust date/time format on add action
 - [ ] Edit date/time on click
 - [ ] Reorder with drag and drop
 - [ ] Store todo list in local storage

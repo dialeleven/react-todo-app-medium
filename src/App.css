@@ -135,7 +135,7 @@ h1 {
 }
  
 .todo-item .delete-button:hover {
-   background-color: #ca2737;
+   background-color: #af2432;
 }
 
 .todo-item input[type="checkbox"] {
