@@ -25,7 +25,7 @@ function TodoList() {
       },
       {
          id: 2,
-         text: "Edit date/time",
+         text: "Edit due date/time",
          completed: false
       },
       {
