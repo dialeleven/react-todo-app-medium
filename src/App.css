@@ -1,13 +1,16 @@
-/* TodoList.css */
+/* App.css */
 body {
-   font-family: 'Segoe UI', 'Roboto', 'Oxygen',
-     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+   font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
    background-color: #cce8f3;
 }
 
-textarea {
-   font-family: 'Segoe UI', 'Roboto', 'Oxygen',
-     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+textarea, input {
+   font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+input[type="checkbox"] {
+   transform: scale(1.5);
+   cursor: pointer;
 }
 
 .top-add-todo-button {
@@ -34,7 +37,7 @@ textarea {
 
 h1 {
    max-width: 400px;
-   margin: 0 auto; /* Center align the todo list */
+   margin: 0 auto;
    text-align: center;
    color: #555;
    margin-top: 15px;
@@ -44,7 +47,7 @@ h1 {
 .edit-input {
    text-align: left;
    width: 90%;
-   border-radius: 3px; /* Optional: Add rounded corners */
+   border-radius: 3px;
 }
 
 .todo-text {
@@ -52,49 +55,69 @@ h1 {
 }
 
 .todo-list {
-   max-width: 400px; /* Adjust max-width to your desired width */
-   margin: 0 auto; /* Center align the todo list */
+   max-width: 400px;
+   margin: 0 auto;
    padding-bottom: 30px;
 }
  
 .todo-item {
-   display: flex;
    align-items: center;
    justify-content: space-between;
    background-color: #f8f9fa;
+   color: #333;
    padding: 12px;
    border-radius: 4px;
    margin-bottom: 8px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   width: 100%; /* Make todo items take full width within container */
-   max-width: 100%; /* Ensure they do not exceed their container width */
+   width: 100%;
+   max-width: 100%;
 }
 
+
+
+.todo-content:has(:checked) .todo-text {
+   color: #666;
+   text-decoration: line-through;
+}
+
+.todo-content {
+   display: flex;
+   justify-content: space-between;
+   width: 100%;
+}
+
+.todo-text-container {
+   display: flex;
+   flex-direction: column;
+   padding: 0 5px 0 0;
+}
+
+.due-date {
+   padding-top: 2px;
+   font-size: 0.85rem;
+   color: #888;
+}
+
+/* left algin todo items */
 .todo-item div {
-   flex: 1; /* Take up remaining space */
+   flex: 1;
    margin: 0;
-   color: #333;
 }
  
 .todo-item div.completed {
    text-decoration: line-through;
    color: #888;
 }
- 
-.todo-item:has(:checked) div {
-   color: #888;
-   text-decoration: line-through;
-}
 
 .todo-item .edit-button {
-  background-color: #888;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
-  margin-right: 5px;
-  cursor: pointer;
-  transition: background-color 0.1s ease;
+   background-color: #888;
+   color: white;
+   border: none;
+   padding: 6px 12px;
+   border-radius: 4px;
+   margin-right: 5px;
+   cursor: pointer;
+   transition: background-color 0.1s ease;
 }
 
 .todo-item .edit-button:hover {
@@ -112,13 +135,12 @@ h1 {
 }
  
 .todo-item .delete-button:hover {
-   background-color: #f9031b;
- }
- 
+   background-color: #ca2737;
+}
+
 .todo-item input[type="checkbox"] {
    margin-right: 12px;
 }
-
 
 .container {
    width: 100%;
@@ -147,5 +169,5 @@ h1 {
    padding: 8px;
    border-radius: 4px;
    border: 1px solid #ccc;
-   margin-left: auto; /* Ensure the select menu is pushed to the right */
+   margin-left: auto;
 }

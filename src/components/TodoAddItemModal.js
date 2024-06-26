@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import "./TodoAddItemModal.css";
 
 function TodoAddItemModal({ showModal, handleClose, addTask }) {
+   // State for text input
    const [text, setText] = useState("");
+
+   // State for date/time
+   const [dateTime, setDateTime] = useState("");
 
    // Handle form submit
    const handleSubmit = (e) => {
-      e.preventDefault();
-      addTask(text);
-      setText("");
+      e.preventDefault();  // Prevent the default form submission
+      addTask({text, dateTime});       // Call the addTask function to add the new task
+      setText("");         // Reset the text state to an empty string
+      setDateTime("");
       handleClose();
    };
 
@@ -24,6 +29,8 @@ function TodoAddItemModal({ showModal, handleClose, addTask }) {
       // Add a click event listener to the document and close modal if user clicks outside
       document.addEventListener("click", (e) => {
          if (e.target.className === "modal-backdrop") {
+            setText("");         // Reset the text state to an empty string
+            setDateTime("");
             handleClose();
          }
       });
@@ -31,6 +38,8 @@ function TodoAddItemModal({ showModal, handleClose, addTask }) {
       // handle escape key press to close modal
       document.addEventListener("keydown", (e) => {
          if (e.key === "Escape") {
+            setText("");         // Reset the text state to an empty string
+            setDateTime("");
             handleClose();
          }
       });
@@ -55,14 +64,25 @@ function TodoAddItemModal({ showModal, handleClose, addTask }) {
                value={text}
                onChange={(e) => setText(e.target.value)}
                placeholder="Enter todo item"
-               onKeyPress={handleKeyPress}
+               onKeyDown={handleKeyPress}
                required
                autoFocus
             />
+
+            <div className="modal-date">
+               <label>Due Date (Optional):</label>
+               <input
+                  type="datetime-local"
+                  value={dateTime}
+                  className="modal-date-time"
+                  onChange={(e) => setDateTime(e.target.value)}
+                  onKeyDown={handleKeyPress}
+               />
+            </div>
          </div>
          <div className="modal-footer">
-            <button className="modal-button" onClick={handleClose}>Close</button>
             <button className="modal-button" onClick={handleSubmit}>Add</button>
+            <button className="modal-button" onClick={handleClose}>Close</button>
          </div>
          </div>
       </div>

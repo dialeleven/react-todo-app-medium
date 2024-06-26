@@ -20,16 +20,19 @@ function TodoList() {
       {
          id: 1,
          text: "Edit item",
+         duedate: "2099-01-01 12:00",
          completed: true
       },
       {
          id: 2,
          text: "Reorder with drag and drop",
+         duedate: "2099-01-01 12:00",
          completed: false
       },
       {
          id: 3,
          text: "Filtering option (show 'All' tasks, 'Completed' and 'Uncompleted'). Make sure long text displays properly not running into the button or checkbox.",
+         duedate: "2099-01-01 12:00",
          completed: true
       },
       {
@@ -45,6 +48,7 @@ function TodoList() {
       {
          id: 6,
          text: "Modal delete todo item",
+         duedate: "2099-01-01 12:00",
          completed: false
       },
       {
@@ -67,12 +71,13 @@ function TodoList() {
    // Helper function (addTask) - creates a new task object with a unique `id`, `text`, and `completed` property.
    // The new task object is added to the `tasks` array using the `setTasks` function.
    // Resets the `text` state to an empty string.  
-   function addTask(text) {
+   function addTask({ text, dateTime }) {
       // if text is not empty, create a new task object
       if (text !== '') {
          const newTask = {
             id: Date.now(),
             text,
+            duedate: dateTime,
             completed: false
          };
          setTasks([...tasks, newTask]);
