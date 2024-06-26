@@ -9,11 +9,11 @@ The Medium.com tutorial covers reading the TODO list, TODO items, creating a new
 **TODO - Completed Items**
 - [x] Edit item (click item to edit, Enter key/blur() to save, Esc key to discard changes)
 - [x] Modal add todo item
+- [x] Filtering option (show 'All' tasks, 'Checked' and 'Unchecked')
+- [x] Modal: Add due date/time
 
 **TODO - Features To Add**
 - [ ] Reorder with drag and drop
-- [ ] Filtering option (show 'All' tasks, 'Completed' and 'Uncompleted')
-- [ ] Due date/time
 - [ ] Store todo list in local storage
 
 # Getting Started with Create React App
