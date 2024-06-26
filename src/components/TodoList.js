@@ -19,42 +19,30 @@ function TodoList() {
    const [tasks, setTasks] = useState([
       {
          id: 1,
-         text: "Edit item",
+         text: "Edit item  - watch out for long text lines that wrap)",
          duedate: "2099-01-01 12:00",
          completed: true
       },
       {
          id: 2,
-         text: "Reorder with drag and drop",
-         duedate: "2099-01-01 12:00",
+         text: "Adjust date/time on add action",
          completed: false
       },
       {
          id: 3,
-         text: "Filtering option (show 'All' tasks, 'Completed' and 'Uncompleted'). Make sure long text displays properly not running into the button or checkbox.",
-         duedate: "2099-01-01 12:00",
-         completed: true
+         text: "Edit date/time",
+         completed: false
       },
       {
          id: 4,
-         text: "Due date/time",
+         text: "Reorder with drag and drop",
+         duedate: "2099-01-01 12:00",
          completed: false
       },
       {
          id: 5,
          text: "Store todo list in local storage",
          completed: false
-      },
-      {
-         id: 6,
-         text: "Modal delete todo item",
-         duedate: "2099-01-01 12:00",
-         completed: false
-      },
-      {
-         id: 7,
-         text: "Modal add todo item",
-         completed: true
       }
    ]);
 
