@@ -19,6 +19,7 @@ The Medium.com tutorial covers reading the TODO list, TODO items, creating a new
 **TODO - Features To Add**
 - [ ] Reorder with drag and drop
 - [ ] Store todo list in local storage
+- [ ] [Redux](https://redux.js.org/) state management(?)
 
 # Getting Started with Create React App
 
