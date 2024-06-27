@@ -4,7 +4,7 @@ Built using tutorial sources:
 - https://medium.com/@worachote/building-a-todo-list-app-with-reactjs-a-step-by-step-guide-2c58b9b6c0f5
 - "Master React in 5 Days" by Eric Sarrion
 
-The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. The "Master React" book was used to cover updating/editing a TODO item. Adding additional functionality from the book or online resources.
+The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. Additional functionality was developed with the aid of the "Master React" book (updating/editing a TODO item) and other online resources. This is an interesting project to get aquainted with how React works from working with components, JSX syntax, reactive variables (useState), and hooks (useEffect, useContext).
 
 **TODO - Completed Items**
 - [x] Edit item (click item to edit, Enter key/blur() to save, Esc key to discard changes)
