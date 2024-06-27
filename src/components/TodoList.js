@@ -29,7 +29,7 @@ function TodoList() {
       {
          id: 2,
          text: "Edit due date/time",
-         completed: false
+         completed: true
       },
       {
          id: 4,
