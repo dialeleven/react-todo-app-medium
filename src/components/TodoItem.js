@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 
 
 function TodoItem({ task, deleteTask, toggleCompleted, updateTask, editItemModal }) {
-   // State variable  'editOn' is used to toggle the edit input field visibility when the edit button is clicked
-   const [editOn, setEditOn] = useState(false);
-
    // State variable  'editText' is used to store the current value of the edit input field
    const [editText, setEditText] = useState(task.text);
 
@@ -17,49 +14,6 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask, editItemModal
    function handleDelete() {
       if (window.confirm(`Delete todo: ${task.text}?`))
          deleteTask(task.id);
-   }
-
-   // function to display/hide the edit input field
-   function editItem() {
-      // if user blurs off the text input field and clicks the edit button again, don't enable the input field
-      
-
-      // Invert the 'editOn' state using !.
-      // If 'editOn' is true, set it to false. If 'editOn' is false, set it to true.
-      setEditOn(!editOn);
-   }
-
-   // function to save changes per character typed/pasted when editing a todo item
-   // otherwise when typing, the original value is displayed
-   function saveEdit(event) {
-      console.log(event.target.value);
-      setEditText(event.target.value);
-   }
-
-   // function to save edit todo changes
-   function saveChanges() {
-      updateTask(task.id, editText);
-      setEditOn(false);
-   }
-
-   // function to handle keyboard key presses
-   function handleKeyPress(event) {
-      // if the 'Enter' key is pressed, save the changes
-      if (event.key === 'Enter') {
-         saveChanges();
-      }
-
-      // if the 'Escape' key is pressed, invert the 'editOn' state and discard changes
-      if (event.key === 'Escape') {
-         // alert(task.text);
-         setEditText(task.text); // set the 'editText' state to the original value of the todo item
-         setEditOn(!editOn);
-      }
-   }
-
-   // function to handle edit todo input losing focus (i.e. save the changes)
-   function blur() {
-      saveChanges();
    }
 
    // user clicks the edit button to edit the todo item
@@ -78,17 +32,11 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask, editItemModal
    return (
       <div className="todo-item">
          <div className="todo-content">
-            <input type="checkbox" checked={task.completed} onChange={handleChange} onBlur={blur}/>
+            <input type="checkbox" checked={task.completed} onChange={handleChange} />
             <div className="todo-text-container">
-               {editOn ? (
-                  <textarea
-                     type="text" value={editText} className="edit-input" onChange={saveEdit}
-                     onBlur={blur} onKeyDown={handleKeyPress} autoFocus />
-               ) : (
-                  <div onClick={editItem} className="todo-text">
-                     {task.text}
-                  </div>
-               )}
+               <div className="todo-text">
+                  {task.text}
+               </div>
                <div className="due-date">{task.duedate}</div>
             </div>
             <button className="edit-button" onClick={editItemModal2}>
