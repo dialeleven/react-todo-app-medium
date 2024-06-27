@@ -3,7 +3,7 @@ import "./TodoAddItemModal.css";
 
 import { TodoListContext } from "./TodoList";
 
-function TodoAddItemModal({ showModal, handleClose, addTask, addEditMode, currentTaskId }) {
+function TodoAddItemModal({ showModal, handleClose, addTask, updateTask, addEditMode, currentTaskId }) {
    // State for text input
    const [text, setText] = useState("");
 
@@ -68,19 +68,34 @@ function TodoAddItemModal({ showModal, handleClose, addTask, addEditMode, curren
    function handleSubmit(event) {
       event.preventDefault();  // Prevent the default form submission
 
-      // if text is not empty, add the new task
-      if (text !== "")
-      {
-         // replace the 'T' in the date/time with a space and set the date/time
-         const formattedDateTime = dateTime.replace("T", " ");
-   
-         addTask({text, dateTime: formattedDateTime});       // Call the addTask function to add the new task
-         setText("");         // Reset the text state to an empty string
-         setDateTime("");
-         handleClose();
-      }
-      else {
-         // alert('Please enter some text.');
+      switch (addEditMode) {
+         case 'Edit':
+            //alert('edit mode logic');
+            let formattedDateTime = '';
+
+            if (dateTime) {
+               formattedDateTime = dateTime.replace("T", " ");
+            }
+            
+            updateTask(currentTaskId, text, formattedDateTime);
+            handleClose(); // Close the modal after updating
+            break;
+
+         default:
+            // if text is not empty, add the new task
+            if (text !== "")
+            {
+               // replace the 'T' in the date/time with a space and set the date/time
+               const formattedDateTime = dateTime.replace("T", " ");
+         
+               addTask({text, dateTime: formattedDateTime});       // Call the addTask function to add the new task
+               setText("");         // Reset the text state to an empty string
+               setDateTime("");
+               handleClose();
+            }
+            else {
+               // alert('Please enter some text.');
+            }
       }
    }
 
@@ -154,7 +169,7 @@ function TodoAddItemModal({ showModal, handleClose, addTask, addEditMode, curren
                   </div>
                </div>
                <div className="modal-footer">
-                  <button className="modal-button" onClick={handleSubmit}>Add</button>
+                  <button className="modal-button" onClick={handleSubmit}>{addEditMode}</button>
                   <button className="modal-button-close" onClick={handleClose}>Close</button>
                   {/* expression to conditionally render the 'New' button */}
                   {

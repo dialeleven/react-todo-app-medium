@@ -124,11 +124,11 @@ function TodoList() {
    }
 
    // Helper function (updateTask) - updates the `text` property of a task by `id` using the `setTasks` function.
-   function updateTask(id, newText) {
+   function updateTask(id, newText, formattedDateTime) {
       setTasks(
          tasks.map(task => {
             if (task.id === id) {
-               return { ...task, text: newText };
+               return { ...task, text: newText, duedate: formattedDateTime };
             } else {
                return task;
             }
@@ -246,6 +246,7 @@ function TodoList() {
             showModal={showModal}
             handleClose={handleClose}
             addTask={addTask}
+            updateTask={updateTask}
             addEditMode={addEditMode}
             currentTaskId={currentTaskId}
          />
