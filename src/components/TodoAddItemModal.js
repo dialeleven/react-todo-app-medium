@@ -73,9 +73,7 @@ function TodoAddItemModal({ showModal, handleClose, addTask, updateTask, addEdit
             //alert('edit mode logic');
             let formattedDateTime = '';
 
-            if (dateTime) {
-               formattedDateTime = dateTime.replace("T", " ");
-            }
+            formattedDateTime = dateTime.replace("T", " ");
             
             updateTask(currentTaskId, text, formattedDateTime);
             handleClose(); // Close the modal after updating
