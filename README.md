@@ -13,9 +13,10 @@ The Medium.com tutorial covers reading the TODO list, TODO items, creating a new
 - [x] Modal: Add due date/time
 - [x] Adjust date/time format on add action
 - [x] Modal: close button behavior - clear out text input and date/time input
+- [x] Edit task in modal (todo text, due date)
+   - [x] Conditionally adjust labels/headings based on add/edit action
 
 **TODO - Features To Add**
-- [ ] Edit due date/time on click
 - [ ] Reorder with drag and drop
 - [ ] Store todo list in local storage
 
