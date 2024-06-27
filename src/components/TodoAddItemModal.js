@@ -36,7 +36,8 @@ function TodoAddItemModal({ showModal, handleClose, addTask, updateTask, addEdit
    // Set the text and date/time state based on the found task when editing.
    // Passing dependency array [prop, state] at end using addEditMode (prop)
    // and foundTask (state).
-   useEffect(() => {
+   useEffect(function() {
+   // useEffect(() => {
       // Edit mode, so populate text and date/time from task being edited
       if (addEditMode === 'Edit' && foundTask) {
          setText(foundTask.text);
