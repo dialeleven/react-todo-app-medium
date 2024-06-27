@@ -71,7 +71,7 @@ function TodoAddItemModal({ showModal, handleClose, addTask, updateTask, addEdit
       switch (addEditMode) {
          case 'Edit':
             //alert('edit mode logic');
-            let formattedDateTime = '';
+            let formattedDateTime = ''; // set to empty string to prevent error
 
             formattedDateTime = dateTime.replace("T", " ");
             
