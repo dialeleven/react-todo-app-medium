@@ -12,17 +12,17 @@ function TodoAddItemModal({ showModal, handleClose, addTask, updateTask, addEdit
 
    const [isNewButtonHidden, setIsNewButtonHidden] = useState(true);
 
-   // our list of tasks
-   const editObject = useContext(TodoListContext);
+   // The list of tasks from the context provider
+   const tasksListObj = useContext(TodoListContext);
 
-   //console.log(editObject);
+   //console.log(tasksListObj);
    // console.log('currentTaskId in TodoAddItemModal: ', currentTaskId);
-   // console.log('editObject in TodoAddItemModal: ', editObject);
+   // console.log('tasksListObj in TodoAddItemModal: ', tasksListObj);
    // console.log('currentTaskId:', currentTaskId);
-   // console.log('editObject:', editObject);
+   // console.log('tasksListObj:', tasksListObj);
 
-
-   const foundTask = editObject.find(task => task.id === currentTaskId);
+   // Find the task with the matching ID
+   const foundTask = tasksListObj.find(task => task.id === currentTaskId);
 
    if (foundTask) {
       console.log('Found task:', foundTask);
@@ -33,12 +33,15 @@ function TodoAddItemModal({ showModal, handleClose, addTask, updateTask, addEdit
    }
 
 
+   // Set the text and date/time state based on the found task when editing.
+   // Passing dependency array [prop, state] at end using addEditMode (prop)
+   // and foundTask (state).
    useEffect(() => {
+      // Edit mode, so populate text and date/time from task being edited
       if (addEditMode === 'Edit' && foundTask) {
          setText(foundTask.text);
+         setDateTime(""); // clear date/time to avoid displaying old date/time from editing another task
          setDateTime(foundTask.duedate);
-      } else {
-         setText(""); // Reset text state if not in edit mode or foundTask is not defined
       }
    }, [addEditMode, foundTask]);
 
@@ -92,7 +95,7 @@ function TodoAddItemModal({ showModal, handleClose, addTask, updateTask, addEdit
                handleClose();
             }
             else {
-               // alert('Please enter some text.');
+               alert('Please enter some text.');
             }
       }
    }
