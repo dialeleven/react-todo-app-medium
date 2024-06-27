@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
+function TodoItem({ task, deleteTask, toggleCompleted, updateTask, editItemModal }) {
    // State variable  'editOn' is used to toggle the edit input field visibility when the edit button is clicked
    const [editOn, setEditOn] = useState(false);
 
@@ -62,6 +62,19 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
       saveChanges();
    }
 
+   // user clicks the edit button to edit the todo item
+   function editItemModal2() {
+      //alert('hi');
+      // console.log(task.id);
+      // console.log(task.text);
+      // console.log(task.duedate);
+      // console.log('task in editItemModal2: ', task);
+       console.log('task.id in editItemModal2: ', task.id);
+
+      // call editItemModal() from TodoList.js, passing in the task object being edited
+      editItemModal(task.id);
+   }
+
    return (
       <div className="todo-item">
          <div className="todo-content">
@@ -78,6 +91,13 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask }) {
                )}
                <div className="due-date">{task.duedate}</div>
             </div>
+            <button className="edit-button" onClick={editItemModal2}>
+               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-pencil-square" viewBox="0 0 16 16" alt="Edit">
+                  <title>Edit</title>
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+               </svg>
+            </button>
             <button className="delete-button" onClick={handleDelete}>
                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash3" viewBox="0 0 16 16" alt="Delete">
                   <title>Delete</title>

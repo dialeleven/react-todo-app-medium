@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import TodoItem from './TodoItem';
 import TodoAddItemModal from './TodoAddItemModal';
+
+
+const TodoListContext = createContext();
 
 function TodoList() {
    /*
@@ -47,9 +50,27 @@ function TodoList() {
    // State variable 'filter' is used to store the current value of the task filter menu (default is 'All')
    const [filter, setFilter] = useState('All');
 
-   // state variable for "add todo" modal window
+   /*
+   useState accepts an initial state and returns two values:
+   1. The current state (showModal)
+   2. A function that updates the state (setShowModal).
+
+   State variable (showModal) for "add todo" modal window is set to false to hide the modal by default
+   when the <TodoAddItemModal /> component is initially rendered from TodoAddItemModal.js.
+
+   The second parameter (setShowModal) is the function used to update the value of 'showModal' which
+   will show/hide the modal component.
+   */
    const [showModal, setShowModal] = useState(false);
+
+   // State variable 'dateTime' is used to store the current value of the date/time input field from the modal
    const [dateTime, setDateTime] = useState('');
+
+   // State var to adjust modal window heading (e.g. "Add Todo" or "Edit Todo") - default "Add"
+   const [addEditMode, setAddEditMode] = useState('Add');
+
+   // State var to store current task id being edited when a user clicks the edit button
+   const [currentTaskId, setCurrentTaskId] = useState(null);
 
 
    // Helper function (addTask) - creates a new task object with a unique `id`, `text`, and `completed` property.
@@ -117,32 +138,63 @@ function TodoList() {
 
    // Helper function - updates the `filter` state variable with the current value of the filter todo select menu
    function handleFilterChange(event) {
-      // alert(event.target.value);
+      console.log(event.target.value);
       setFilter(event.target.value);
    }
 
    // helper function - returns filtered tasks based on the current value of the filter todo select menu
-   function getFilteredTasks(event) {
+   function getFilteredTasks() {
+      //console.log(event);
+
       switch (filter) {
          case 'tasks-checked':
-           return tasks.filter(task => task.completed);
+            return tasks.filter(task => task.completed);
+            break;
+
          case 'tasks-unchecked':
-           return tasks.filter(task => !task.completed);
+            return tasks.filter(task => !task.completed);
+            break;
+
          default:
-           return tasks;
+            return tasks;
        }
    }
 
-   const handleClose = () => {
+   /*
+   const handleCloseOld = () => {
       setShowModal(false);
       setText('');
       setDateTime('');
    };
+   */
+
+   // handle closing modal window
+   function handleClose() {
+      setShowModal(false);
+      setText('');
+      setDateTime('');
+      setAddEditMode('Add'); // reset label to 'Add' for modal window
+      setCurrentTaskId(null); // Reset current task ID
+   }
+
+   // show modal window
+   function handleShow() {
+      setShowModal(true);
+   }
+
+   function editItemModal(task_id) {
+      // alert(task_id);
+      setAddEditMode('Edit'); // set add/edit label to 'Edit' for modal window
+      setCurrentTaskId(task_id); // Reset current task ID
+      setShowModal(true);
+   }
 
    return (
+      <TodoListContext.Provider value={ tasks }>
       <div className="container">
          <div className="header">
-            <button className="top-add-todo-button" onClick={() => setShowModal(true)}>Add Todo</button>
+            {/* <button className="top-add-todo-button" onClick={() => setShowModal(true)}>Add Todo</button> */}
+            <button className="top-add-todo-button" onClick={handleShow}>Add Todo</button>
             <div className="filter-container">
                <select className="filter-select" onChange={handleFilterChange}>
                   <option value="tasks-all">All</option>
@@ -160,6 +212,7 @@ function TodoList() {
                      deleteTask={deleteTask}
                      toggleCompleted={toggleCompleted}
                      updateTask={updateTask}
+                     editItemModal={editItemModal}
                   />
             ))}
             {/* original output of tasks array with no filtering
@@ -180,13 +233,26 @@ function TodoList() {
             <button className="add-todo-button-footer" onClick={() => setShowModal(true)}>Add Todo</button>
          </div>
 
+         {/* 
+         The <TodoAddItemModal> component is being used in the TodoList component. Here's an explanation of the props being passed to <TodoAddItemModal>:
+
+         1. showModal: This prop is passing the showModal state variable to the [TodoAddItemModal] (/src/components/TodoAddItemModal.js component. It allows the modal window to know whether it should be displayed or not based on the value of showModal.
+
+         2. handleClose: This prop is passing the handleClose function to the [TodoAddItemModal] (/src/components/TodoAddItemModal.js) component. It enables the modal window to call the handleClose function when needed, typically to close the modal window.
+
+         3. addTask: This prop is passing the [addTask] (\src\components\TodoList.js) function to the [TodoAddItemModal] (/src/components/TodoAddItemModal.js) component. It allows the modal window to call the [addTask] (\src\components\TodoList.js) function when a new task needs to be added based on user input within the modal.
+         */}
          <TodoAddItemModal
             showModal={showModal}
             handleClose={handleClose}
             addTask={addTask}
+            addEditMode={addEditMode}
+            currentTaskId={currentTaskId}
          />
       </div>
+      </TodoListContext.Provider>
    );
 }
 
 export default TodoList;
+export { TodoListContext };
