@@ -32,14 +32,19 @@ function TodoList() {
          completed: true
       },
       {
-         id: 4,
+         id: 3,
          text: "Reorder with drag and drop",
          duedate: "2024-12-31 09:00",
          completed: false
       },
       {
-         id: 5,
+         id: 4,
          text: "Store todo list in local storage",
+         completed: false
+      },
+      {
+         id: 5,
+         text: "Tasks completed summary",
          completed: false
       }
    ]);
