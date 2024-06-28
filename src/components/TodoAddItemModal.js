@@ -44,6 +44,11 @@ function TodoAddItemModal({ showModal, handleClose, addTask, updateTask, addEdit
          setDateTime(""); // clear date/time to avoid displaying old date/time from editing another task
          setDateTime(foundTask.duedate);
       }
+      // reset inputs for add mode
+      else {
+         setText("");
+         setDateTime("");
+      }
    }, [addEditMode, foundTask]);
 
    // Handle form submit (arrow function version)

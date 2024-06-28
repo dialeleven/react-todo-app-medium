@@ -65,7 +65,7 @@
 }
 
 .modal-date-time {
-   width: calc(60%); /* Adjust the width to fit within the modal */
+   width: calc(68%); /* Adjust the width to fit within the modal */
    padding: 5px;
    border: 1px solid #ccc;
    border-radius: 4px;

@@ -1,0 +1,25 @@
+.todo-hero {
+   display: flex;
+   align-items: center;
+   gap: 5px;
+   padding: 0 10px;
+ }
+ 
+.todo-count {
+   display: inline-block;
+   padding: 5px 10px;
+   background-color: #4caf50;
+   color: white;
+   border-radius: 18px;
+   text-align: center;
+   max-width: 150px; /* limit width for very large numbers */
+   overflow: hidden; /* overflowed content is hidden */
+   text-overflow: ellipsis; /* adds ellipses to truncated long text */
+ }
+
+.todo-progress-text {
+   font-size: 0.9rem;
+   font-weight: bold;
+   color: #777;
+   text-align: center;
+}

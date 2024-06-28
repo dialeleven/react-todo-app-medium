@@ -1,7 +1,7 @@
 import React, { useState, createContext } from "react";
 import TodoItem from './TodoItem';
 import TodoAddItemModal from './TodoAddItemModal';
-
+import TodoHero from "./TodoHero";
 
 const TodoListContext = createContext();
 
@@ -45,12 +45,9 @@ function TodoList() {
       {
          id: 5,
          text: "Tasks completed summary",
-         completed: false
+         completed: true
       }
    ]);
-
-   // State variable  'text' is used to store the current value of the input field
-   const [text, setText] = useState('');
 
    // State variable 'filter' is used to store the current value of the task filter menu (default is 'All')
    const [filter, setFilter] = useState('All');
@@ -68,14 +65,14 @@ function TodoList() {
    */
    const [showModal, setShowModal] = useState(false);
 
-   // State variable 'dateTime' is used to store the current value of the date/time input field from the modal
-   const [dateTime, setDateTime] = useState('');
-
    // State var to adjust modal window heading (e.g. "Add Todo" or "Edit Todo") - default "Add"
    const [addEditMode, setAddEditMode] = useState('Add');
 
    // State var to store current task id being edited when a user clicks the edit button
    const [currentTaskId, setCurrentTaskId] = useState(null);
+
+   const completedTasks = tasks.filter(task => task.completed).length;
+   const totalTasks = tasks.length;
 
 
    // Helper function (addTask) - creates a new task object with a unique `id`, `text`, and `completed` property.
@@ -154,11 +151,9 @@ function TodoList() {
       switch (filter) {
          case 'tasks-checked':
             return tasks.filter(task => task.completed);
-            break;
 
          case 'tasks-unchecked':
             return tasks.filter(task => !task.completed);
-            break;
 
          default:
             return tasks;
@@ -176,8 +171,8 @@ function TodoList() {
    // handle closing modal window
    function handleClose() {
       setShowModal(false);
-      setText('');
-      setDateTime('');
+      //setText('');
+      //setDateTime('');
       setAddEditMode('Add'); // reset label to 'Add' for modal window
       setCurrentTaskId(null); // Reset current task ID
    }
@@ -187,6 +182,8 @@ function TodoList() {
       setShowModal(true);
    }
 
+
+   // display the edit todo modal window passing the current task selected for editing
    function editItemModal(task_id) {
       // alert(task_id);
       setAddEditMode('Edit'); // set add/edit label to 'Edit' for modal window
@@ -198,8 +195,8 @@ function TodoList() {
       <TodoListContext.Provider value={ tasks }>
       <div className="container">
          <div className="header">
-            {/* <button className="top-add-todo-button" onClick={() => setShowModal(true)}>Add Todo</button> */}
             <button className="top-add-todo-button" onClick={handleShow}>Add Todo</button>
+            <TodoHero completedTasks={completedTasks} totalTasks={totalTasks} />
             <div className="filter-container">
                <select className="filter-select" onChange={handleFilterChange}>
                   <option value="tasks-all">All</option>
@@ -208,6 +205,7 @@ function TodoList() {
                </select>
             </div>
          </div>
+         
          
          <div className="todo-list">
             {getFilteredTasks().map(task => (
@@ -230,11 +228,6 @@ function TodoList() {
                   updateTask={updateTask}
                />
             ))} */}
-            {/*
-            // original "add todo" text input and button combo
-            <input type="text" value={text} className="add-task-input" onChange={e => setText(e.target.value)} />
-            <button className="bottom-add-todo-button" onClick={() => addTask(text)}>Add Todo</button>
-            */}
             <button className="add-todo-button-footer" onClick={() => setShowModal(true)}>Add Todo</button>
          </div>
 
