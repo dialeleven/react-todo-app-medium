@@ -7,7 +7,7 @@ Built using tutorial sources:
 The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. Additional functionality was developed with the aid of the "Master React" book (updating/editing a TODO item) and other online resources. This is an interesting project to get aquainted with how React works from working with components, JSX syntax, reactive variables (useState), and hooks (useEffect, useContext).
 
 ## Screenshot
-!(https://github.com/dialeleven/react-todo-app-medium/blob/main/public/assets/screenshot.png?raw=true)
+![TODO App Screenshot](https://github.com/dialeleven/react-todo-app-medium/blob/main/public/assets/screenshot.png?raw=true)
 
 **TODO - Completed Items**
 - [x] Edit item (click item to edit, Enter key/blur() to save, Esc key to discard changes)
