@@ -2,10 +2,12 @@
 
 Built using tutorial sources:
 - https://medium.com/@worachote/building-a-todo-list-app-with-reactjs-a-step-by-step-guide-2c58b9b6c0f5
-- "Master React in 5 Days" by Eric Sarrion
 - https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs
+- "Master React in 5 Days" by Eric Sarrion
 
-The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. Additional functionality was developed with the aid of the "Master React" book (updating/editing a TODO item) and other online resources. This is an interesting project to get aquainted with how React works from working with components, JSX syntax, managing state (useState), various hooks (useEffect, useContext), and using the Context Provider to pass state down to child components (e.g. <TodoList /> (TodoList.js) `tasks` object passed down to the child <TodoAddItemModal /> (TodoAddItemModal.js) to access the `tasks` list object and filter out the selected task id when 'edit' is clicked).
+The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. Additional functionality was developed with the aid of the "Master React" book (updating/editing a TODO item) and other online resources.
+
+This is a great project to get aquainted with how React works from working with components, JSX syntax, managing state (useState), various hooks (useEffect, useContext), and using the Context Provider to pass state down to child components (e.g. <TodoList /> (TodoList.js) `tasks` object passed down to the child <TodoAddItemModal /> (TodoAddItemModal.js) to access the `tasks` list object and filter out the selected task id when 'edit' is clicked).
 
 ## Screenshot
 ![TODO App Screenshot](https://github.com/dialeleven/react-todo-app-medium/blob/main/public/assets/screenshot.png?raw=true)
