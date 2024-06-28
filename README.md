@@ -2,9 +2,15 @@
 
 Built using tutorial sources:
 - https://medium.com/@worachote/building-a-todo-list-app-with-reactjs-a-step-by-step-guide-2c58b9b6c0f5
+- https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs
 - "Master React in 5 Days" by Eric Sarrion
 
-The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. Additional functionality was developed with the aid of the "Master React" book (updating/editing a TODO item) and other online resources. This is an interesting project to get aquainted with how React works from working with components, JSX syntax, reactive variables (useState), and hooks (useEffect, useContext).
+The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. Additional functionality was developed with the aid of the "Master React" book (updating/editing a TODO item) and other online resources.
+
+This is a great project to get aquainted with how React works from working with components, JSX syntax, managing state (useState), various hooks (useEffect, useContext), and using the Context Provider to pass state down to child components (e.g. <TodoList /> (TodoList.js) `tasks` object passed down to the child <TodoAddItemModal /> (TodoAddItemModal.js) to access the `tasks` list object and filter out the selected task id when 'edit' is clicked).
+
+## Screenshot
+![TODO App Screenshot](https://github.com/dialeleven/react-todo-app-medium/blob/main/public/assets/screenshot.png?raw=true)
 
 **TODO - Completed Items**
 - [x] Edit item (click item to edit, Enter key/blur() to save, Esc key to discard changes)
@@ -15,11 +21,11 @@ The Medium.com tutorial covers reading the TODO list, TODO items, creating a new
 - [x] Modal: close button behavior - clear out text input and date/time input
 - [x] Edit task in modal (todo text, due date)
    - [x] Conditionally adjust labels/headings based on add/edit action
+- [x] [Tasks todo vs completed summary](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#The-TODOHero-Component)
 
 **TODO - Features To Add**
 - [ ] Reorder with drag and drop
 - [ ] [Store todo list in local storage](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#How-to-Persist-the-Todo-Data-to-localStorage)
-- [ ] [Tasks todo vs completed summary](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#The-TODOHero-Component)
 - [ ] [Redux](https://redux.js.org/) state management(?)
 
 # Getting Started with Create React App
