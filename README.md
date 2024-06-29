@@ -26,10 +26,10 @@ The app build is hosted on Netlify at https://react-todo-app8.netlify.app to int
    - [x] Conditionally adjust labels/headings based on add/edit action
 - [x] [Tasks todo vs completed summary](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#The-TODOHero-Component)
 - [x] [Store todo list in local storage](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#How-to-Persist-the-Todo-Data-to-localStorage)
+- [x] Deploy project online (e.g Netlify)
 
 **TODO - Features To Add**
 - [ ] Reorder with drag and drop
-- [ ] Deploy project online (e.g Netlify)
 - [ ] [Redux](https://redux.js.org/) state management(?)
 
 # Getting Started with Create React App
