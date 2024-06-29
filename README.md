@@ -12,6 +12,8 @@ This is a great project to get aquainted with how React works from working with 
 ## Live Demo
 The app build is hosted on Netlify at https://react-todo-app8.netlify.app to interact with.
 
+Netlify has a nice Continuous Deployment (CD) feature, so when your GitHub repository changes are pushed, Netlify automatically builds and deploys your site to their CDN (Content Delivery Network). Netlify's CD includes automatic builds, previews for pull requests, instant cache invalidation, and continuous delivery to production. So, Netlify can be a part of a CI/CD pipeline which is a great way to get started with CI/CD if you haven't used it before!
+
 ## Screenshot
 ![TODO App Screenshot](https://github.com/dialeleven/react-todo-app-medium/blob/main/public/assets/screenshot_todo_app.png?raw=true)
 
