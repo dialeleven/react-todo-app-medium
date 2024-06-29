@@ -19,6 +19,8 @@ function TodoList() {
       The current state (tasks) is stored in the first element of the array.
       The function to update the state (setTasks) is stored in the second element of the array.
    */
+  /*
+   ? old hard coded tasks list
    const [tasks, setTasks] = useState([
       {
          id: 1,
@@ -48,10 +50,57 @@ function TodoList() {
          completed: true
       }
    ]);
+   */
+  
+   // default tasks for app
+   const [defaultTasks, setDefaultTasks] = useState([
+      {
+         id: 1,
+         text: "Edit item",
+         duedate: "2099-01-01 12:00",
+         completed: true
+      },
+      {
+         id: 2,
+         text: "Edit due date/time",
+         completed: true
+      },
+      {
+         id: 3,
+         text: "Reorder with drag and drop",
+         duedate: "2024-12-31 09:00",
+         completed: false
+      },
+      {
+         id: 4,
+         text: "Store todo list in local storage",
+         completed: false
+      },
+      {
+         id: 5,
+         text: "Tasks completed summary",
+         completed: true
+      }
+   ]);
+
+   // State var for our tasks list
+   const [tasks, setTasks] = useState([]);
+
+   // Retrieve data from local storage when component mounts
+   React.useEffect(() => {
+      const storedTasks = localStorage.getItem('tasks');
+      
+      if (storedTasks) {
+         setTasks(JSON.parse(storedTasks));
+      }
+      // initialize tasks array to default data if no tasks found
+      else {
+         setTasks(defaultTasks);
+      }
+   }, []);
 
    // State variable 'filter' is used to store the current value of the task filter menu (default is 'All')
    const [filter, setFilter] = useState('All');
-
    /*
    useState accepts an initial state and returns two values:
    1. The current state (showModal)
@@ -71,8 +120,9 @@ function TodoList() {
    // State var to store current task id being edited when a user clicks the edit button
    const [currentTaskId, setCurrentTaskId] = useState(null);
 
+   // State var to store the number of completed tasks
    const completedTasks = tasks.filter(task => task.completed).length;
-   const totalTasks = tasks.length;
+   const totalTasks = tasks.length; // total number of tasks
 
 
    // Helper function (addTask) - creates a new task object with a unique `id`, `text`, and `completed` property.
@@ -87,8 +137,13 @@ function TodoList() {
             duedate: dateTime,
             completed: false
          };
+
+         // update `tasks` state with new task
          setTasks([...tasks, newTask]);
-         // setText(''); ? used with older "add todo" text input and button combo below the todo list
+         
+         // store updated tasks in local storage converting the tasks array of objects to a JSON string
+         const updatedTasksList = JSON.stringify([...tasks, newTask]);
+         localStorage.setItem('tasks', updatedTasksList);
       }
       else {
          // alert('Please enter some text');
@@ -110,6 +165,10 @@ function TodoList() {
           return task.id !== id;
       }));
       */
+
+      // update localStorage after deleting item (convert tasks array to JSON string)
+      const updatedTasksList = JSON.stringify(tasks.filter(task => task.id !== id));
+      localStorage.setItem('tasks', updatedTasksList);
    }
 
    // Helper function (toggleCompleted) - toggles the `completed` property of a task by `id` using the `setTasks` function.
@@ -123,6 +182,10 @@ function TodoList() {
             }
          })
       );
+
+      // update localStorage after marking item completed
+      const updatedTasksList = JSON.stringify(tasks);
+      localStorage.setItem('tasks', updatedTasksList);
    }
 
    // Helper function (updateTask) - updates the `text` property of a task by `id` using the `setTasks` function.
@@ -136,6 +199,10 @@ function TodoList() {
             }
          })
       );
+
+      // update localStorage after updating item
+      const updatedTasksList = JSON.stringify(tasks);
+      localStorage.setItem('tasks', updatedTasksList);
    }
 
    // Helper function - updates the `filter` state variable with the current value of the filter todo select menu
@@ -181,6 +248,11 @@ function TodoList() {
    function handleShow() {
       setShowModal(true);
    }
+
+   function loadDefaultTasks() {
+      setTasks(defaultTasks);
+   }
+   
 
 
    // display the edit todo modal window passing the current task selected for editing
@@ -229,6 +301,7 @@ function TodoList() {
                />
             ))} */}
             <button className="add-todo-button-footer" onClick={() => setShowModal(true)}>Add Todo</button>
+            <button className="reset-app-button-footer" onClick={loadDefaultTasks}>Clear LocalStorage (Load default tasks)</button>
          </div>
 
          {/* 
