@@ -24,6 +24,7 @@ function TodoAddItemModal({ showModal, handleClose, addTask, updateTask, addEdit
    // Find the task with the matching ID
    const foundTask = tasksListObj.find(task => task.id === currentTaskId);
 
+   /*
    if (foundTask) {
       console.log('Found task:', foundTask);
       console.log('Task text:', foundTask.text);
@@ -31,6 +32,7 @@ function TodoAddItemModal({ showModal, handleClose, addTask, updateTask, addEdit
    } else {
       console.log(`Task with ID ${currentTaskId} not found.`);
    }
+   */
 
 
    // Set the text and date/time state based on the found task when editing.
