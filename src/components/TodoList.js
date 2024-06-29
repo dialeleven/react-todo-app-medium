@@ -21,7 +21,7 @@ function TodoList() {
    */
    const [tasks, setTasks] = useState([]);
 
-   const [defaultTasks, setDefaultTasks] = useState([
+   const [defaultTasks, ] = useState([
       {
          id: 1,
          text: "Edit item  - watch out for long text lines that wrap)",
