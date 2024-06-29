@@ -19,9 +19,9 @@ function TodoList() {
       The current state (tasks) is stored in the first element of the array.
       The function to update the state (setTasks) is stored in the second element of the array.
    */
-  /*
-   ? old hard coded tasks list
-   const [tasks, setTasks] = useState([
+   const [tasks, setTasks] = useState([]);
+
+   const [defaultTasks, setDefaultTasks] = useState([
       {
          id: 1,
          text: "Edit item  - watch out for long text lines that wrap)",
@@ -50,57 +50,11 @@ function TodoList() {
          completed: true
       }
    ]);
-   */
-  
-   // default tasks for app
-   const [defaultTasks, setDefaultTasks] = useState([
-      {
-         id: 1,
-         text: "Edit item",
-         duedate: "2099-01-01 12:00",
-         completed: true
-      },
-      {
-         id: 2,
-         text: "Edit due date/time",
-         completed: true
-      },
-      {
-         id: 3,
-         text: "Reorder with drag and drop",
-         duedate: "2024-12-31 09:00",
-         completed: false
-      },
-      {
-         id: 4,
-         text: "Store todo list in local storage",
-         completed: false
-      },
-      {
-         id: 5,
-         text: "Tasks completed summary",
-         completed: true
-      }
-   ]);
-
-   // State var for our tasks list
-   const [tasks, setTasks] = useState([]);
-
-   // Retrieve data from local storage when component mounts
-   React.useEffect(() => {
-      const storedTasks = localStorage.getItem('tasks');
-      
-      if (storedTasks) {
-         setTasks(JSON.parse(storedTasks));
-      }
-      // initialize tasks array to default data if no tasks found
-      else {
-         setTasks(defaultTasks);
-      }
-   }, []);
+   
 
    // State variable 'filter' is used to store the current value of the task filter menu (default is 'All')
    const [filter, setFilter] = useState('All');
+
    /*
    useState accepts an initial state and returns two values:
    1. The current state (showModal)
@@ -120,9 +74,17 @@ function TodoList() {
    // State var to store current task id being edited when a user clicks the edit button
    const [currentTaskId, setCurrentTaskId] = useState(null);
 
-   // State var to store the number of completed tasks
    const completedTasks = tasks.filter(task => task.completed).length;
-   const totalTasks = tasks.length; // total number of tasks
+   const totalTasks = tasks.length;
+
+
+   // Retrieve tasks from localStorage when the component mounts
+   React.useEffect(() => {
+      const storedTasks = localStorage.getItem('tasks');
+      if (storedTasks) {
+         setTasks(JSON.parse(storedTasks));
+      }
+   }, []);
 
 
    // Helper function (addTask) - creates a new task object with a unique `id`, `text`, and `completed` property.
@@ -249,11 +211,6 @@ function TodoList() {
       setShowModal(true);
    }
 
-   function loadDefaultTasks() {
-      setTasks(defaultTasks);
-   }
-   
-
 
    // display the edit todo modal window passing the current task selected for editing
    function editItemModal(task_id) {
@@ -261,6 +218,14 @@ function TodoList() {
       setAddEditMode('Edit'); // set add/edit label to 'Edit' for modal window
       setCurrentTaskId(task_id); // Reset current task ID
       setShowModal(true);
+   }
+
+   function loadDefaultTasks(defaultTasks) {
+      setTasks(defaultTasks);
+
+      // store updated tasks in local storage converting the tasks array of objects to a JSON string
+      const updatedTasksList = JSON.stringify(defaultTasks);
+      localStorage.setItem('tasks', updatedTasksList);
    }
 
    return (
@@ -301,7 +266,7 @@ function TodoList() {
                />
             ))} */}
             <button className="add-todo-button-footer" onClick={() => setShowModal(true)}>Add Todo</button>
-            <button className="reset-app-button-footer" onClick={loadDefaultTasks}>Clear LocalStorage (Load default tasks)</button>
+            <button className="load-default-todos-button" onClick={() => loadDefaultTasks(defaultTasks)}>Load Default Tasks (Reset LocalStorage)</button>
          </div>
 
          {/* 

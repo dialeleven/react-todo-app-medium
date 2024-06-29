@@ -35,8 +35,8 @@ input[type="checkbox"] {
    transition: background-color 0.3s ease;
 }
 
-.reset-app-button-footer {
-   background-color: #8c08d3;
+.load-default-todos-button {
+   background-color: #b602d2;
    color: white;
    border: none;
    padding: 8px 10px;
