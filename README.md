@@ -22,10 +22,10 @@ This is a great project to get aquainted with how React works from working with 
 - [x] Edit task in modal (todo text, due date)
    - [x] Conditionally adjust labels/headings based on add/edit action
 - [x] [Tasks todo vs completed summary](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#The-TODOHero-Component)
+- [x] [Store todo list in local storage](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#How-to-Persist-the-Todo-Data-to-localStorage)
 
 **TODO - Features To Add**
 - [ ] Reorder with drag and drop
-- [ ] [Store todo list in local storage](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#How-to-Persist-the-Todo-Data-to-localStorage)
 - [ ] [Redux](https://redux.js.org/) state management(?)
 
 # Getting Started with Create React App
