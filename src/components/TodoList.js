@@ -74,6 +74,9 @@ function TodoList() {
       if (storedTasks) {
          setTasks(JSON.parse(storedTasks));
       }
+      else {
+         setTasks(defaultTasks);
+      }
    }, []);
 
 

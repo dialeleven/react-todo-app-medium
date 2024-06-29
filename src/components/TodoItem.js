@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 
 
 function TodoItem({ task, deleteTask, toggleCompleted, updateTask, editItemModal }) {
-   // State variable  'editText' is used to store the current value of the edit input field
-   const [editText, setEditText] = useState(task.text);
-
    // function to toggle the completion status of a todo item
    function handleChange() {
       toggleCompleted(task.id);
