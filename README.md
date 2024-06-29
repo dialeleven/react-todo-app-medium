@@ -26,6 +26,7 @@ This is a great project to get aquainted with how React works from working with 
 
 **TODO - Features To Add**
 - [ ] Reorder with drag and drop
+- [ ] Deploy project online (e.g Netlify)
 - [ ] [Redux](https://redux.js.org/) state management(?)
 
 # Getting Started with Create React App
