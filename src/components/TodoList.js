@@ -3,8 +3,14 @@ import TodoItem from './TodoItem';
 import TodoAddItemModal from './TodoAddItemModal';
 import TodoHero from "./TodoHero";
 
+
+// Create context for the tasks to be used in child components
 const TodoListContext = createContext();
 
+
+/**
+ * A React component that manages a todo list.
+ */
 function TodoList() {
    /*
    useState is a React hook that allows us to manage state in a functional component.
@@ -21,6 +27,7 @@ function TodoList() {
    */
    const [tasks, setTasks] = useState([]);
 
+   // set default tasks
    const [defaultTasks] = useState([
       {
          id: 1,
@@ -68,7 +75,16 @@ function TodoList() {
    const totalTasks = tasks.length;
 
 
-   // Retrieve tasks from localStorage when the component mounts
+   /*
+   Retrieve tasks from localStorage when the component mounts passing the 
+   defaultTasks array as a dependency to control when the effect runs.
+   
+   The effect runs when the defaultTasks array changes. Since the defaultTasks
+   array shouldn't change, it's passed to avoid running the effect on every render
+   when no dependency array is passed. An empty array could be used to run the effect
+   once after the initial render though ESLint doesn't like that, so it's to satisfy 
+   ESLint when we run `npm run build`.
+   */
    React.useEffect(() => {
       const storedTasks = localStorage.getItem('tasks');
       if (storedTasks) {
@@ -214,11 +230,14 @@ function TodoList() {
    }
 
    function loadDefaultTasks(defaultTasks) {
-      setTasks(defaultTasks);
+      if (window.confirm(`Overwrite the current tasks saved in Local Storage and load app default tasks?`))
+      {
+         setTasks(defaultTasks);
 
-      // store updated tasks in local storage converting the tasks array of objects to a JSON string
-      const updatedTasksList = JSON.stringify(defaultTasks);
-      localStorage.setItem('tasks', updatedTasksList);
+         // store updated tasks in local storage converting the tasks array of objects to a JSON string
+         const updatedTasksList = JSON.stringify(defaultTasks);
+         localStorage.setItem('tasks', updatedTasksList);
+      }
    }
 
    return (
