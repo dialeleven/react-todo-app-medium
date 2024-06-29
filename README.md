@@ -10,7 +10,9 @@ The Medium.com tutorial covers reading the TODO list, TODO items, creating a new
 This is a great project to get aquainted with how React works from working with components, JSX syntax, managing state (useState), various hooks (useEffect, useContext), and using the Context Provider to pass state down to child components (e.g. <TodoList /> (TodoList.js) `tasks` object passed down to the child <TodoAddItemModal /> (TodoAddItemModal.js) to access the `tasks` list object and filter out the selected task id when 'edit' is clicked).
 
 ## Live Demo
-The app build is hosted on Netlify at https://react-todo-app8.netlify.app to interact with. Netlify has a nice Continuous Deployment (CD) feature, so when your GitHub repository changes are pushed, Netlify automatically builds and deploys your site to their CDN (Content Delivery Network). Netlify's CD includes automatic builds, previews for pull requests, instant cache invalidation, and continuous delivery to production. So, Netlify can be a part of a CI/CD pipeline which is a great way to get started with CI/CD if you haven't used it before!
+The app build is hosted on Netlify at https://react-todo-app8.netlify.app to interact with.
+
+Netlify has a nice Continuous Deployment (CD) feature, so when your GitHub repository changes are pushed, Netlify automatically builds and deploys your site to their CDN (Content Delivery Network). Netlify's CD includes automatic builds, previews for pull requests, instant cache invalidation, and continuous delivery to production. So, Netlify can be a part of a CI/CD pipeline which is a great way to get started with CI/CD if you haven't used it before!
 
 ## Screenshot
 ![TODO App Screenshot](https://github.com/dialeleven/react-todo-app-medium/blob/main/public/assets/screenshot_todo_app.png?raw=true)
