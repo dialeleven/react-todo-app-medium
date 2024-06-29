@@ -21,7 +21,7 @@ function TodoList() {
    */
    const [tasks, setTasks] = useState([]);
 
-   const [defaultTasks, ] = useState([
+   const [defaultTasks] = useState([
       {
          id: 1,
          text: "Edit item  - watch out for long text lines that wrap)",
@@ -77,7 +77,7 @@ function TodoList() {
       else {
          setTasks(defaultTasks);
       }
-   }, []);
+   }, [defaultTasks]);
 
 
    // Helper function (addTask) - creates a new task object with a unique `id`, `text`, and `completed` property.
