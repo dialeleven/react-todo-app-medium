@@ -255,8 +255,14 @@ function TodoList() {
                   updateTask={updateTask}
                />
             ))} */}
-            <button className="add-todo-button-footer" onClick={() => setShowModal(true)}>Add Todo</button>
-            <button className="load-default-todos-button" onClick={() => loadDefaultTasks(defaultTasks)}>Load Default Tasks (Reset LocalStorage)</button>
+            <div className="footerButtonContainer">
+               <div className="footerButtonContainerLeft">
+                  <button className="add-todo-button-footer" onClick={() => setShowModal(true)}>Add Todo</button>
+               </div>
+               <div className="footerButtonContainerRight">
+                  <button className="load-default-todos-button" onClick={() => loadDefaultTasks(defaultTasks)}>Load Default Tasks (Reset LocalStorage)</button>
+               </div>
+            </div>
          </div>
 
          {/* 

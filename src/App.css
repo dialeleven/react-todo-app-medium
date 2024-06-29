@@ -24,28 +24,6 @@ input[type="checkbox"] {
    transition: background-color 0.3s ease;
 }
 
-.add-todo-button-footer {
-   background-color: #007bff;
-   color: white;
-   border: none;
-   padding: 8px 10px;
-   margin: 2px 0 0 0;
-   border-radius: 4px;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
-}
-
-.load-default-todos-button {
-   background-color: #b602d2;
-   color: white;
-   border: none;
-   padding: 8px 10px;
-   margin: 2px 0 0 10px;
-   border-radius: 4px;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
-}
-
 h1 {
    max-width: 400px;
    margin: 0 auto;
@@ -181,4 +159,52 @@ h1 {
    border-radius: 4px;
    border: 1px solid #ccc;
    margin-left: auto;
+}
+
+
+.footerButtonContainer {
+   /* border: 1px solid #000; */
+   display: flex;
+   justify-content: space-between;
+   width: 106%; /* Ensure the container takes the full width */
+}
+ 
+.add-todo-button-footer, .load-default-todos-button {
+   padding: 10px;
+   margin: 0;
+   box-sizing: border-box;
+}
+ 
+.footerButtonContainerLeft {
+   display: flex;
+   justify-content: flex-start;
+}
+ 
+.footerButtonContainerRight {
+   display: flex;
+   justify-content: flex-end;
+}
+
+
+
+.add-todo-button-footer {
+   background-color: #007bff;
+   color: white;
+   border: none;
+   padding: 8px 10px;
+   margin: 2px 0 0 0;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.load-default-todos-button {
+   background-color: #730584;
+   color: white;
+   border: none;
+   padding: 8px 10px;
+   margin: 2px 0 0 10px;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
 }
