@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script>
+   /*
+   First a simple callback function (hello) with a parameter (val)
+      - Function name: 'hello'
+      - Argument: (val)
+   */
+   const hello = (val) => "Hello " + val;
+   console.log( hello('[WORLD]') );
+
+   // Arrow function with no parameters
+   //    Function name: 'hello2'
+   //    Arguments: none
+   const hello2 = () => {
+      return "Hello World from hello2!";
+   }
+
+   console.log(hello2());
+
+   // arrow function with 2 parameters
+   //    Function name: 'multiply'
+   //    Arguments: (a, b)
+   const multiply = (a, b) => {
+      return a * b;
+   }
+
+   console.log('multiply(5, 10): ', multiply(5, 10));
+
+
+   // Anonymous arrow function with no parameters, we define a variable named 'greet'
+   var greet = () =>  
+   { 
+      console.log("An anonymous arrow function named 'greet' with no parameters"); 
+   }
+
+   // call the function using the variable name 'greet'
+   greet(); 
+
+   //  arrow function with a parameter
+   //    Function name: 'greet2'
+   //    Arguments: (name)
+   var greet2 = (name) =>  
+   { 
+      console.log("An anonymous arrow function named 'greet' with a parameter named 'name'. Hi, " + name); 
+   }
+
+   greet2('Sally'); 
+
+   // simple anonymous function which is invoked (called) using the variable name
+   const x = function (a, b) {return a * b};
+   console.log( x(2, 10) );
+
+   /*
+   A self-executing anonymous function (without the name itself) and will see how we may declare it as well as how we may call it in order to print the resultant value (ref: https://www.geeksforgeeks.org/javascript-anonymous-functions/).
+
+   We're going to use this as our base to within setTasks() after the example below.
+
+   We don't need all the extra parentheses here. What we do need is:
+
+   () => {
+      // your code here
+
+      return yourReturnValue;
+      }
+   */
+   (() => { 
+      console.log("a self-executing anonymous function"); 
+   })();
+   </script>
+</head>
+<body>
+   
+Demo of JavaScript ES6 arrow functions. Open the console (F12) to see the output.
+
+<pre>
+   1. Move the Parentheses
+
+   <b>function definition:</b> function () {}
+   <b>arrow function:</b> () => {}
+
+   // original function syntax
+   function () {}
+
+   // move the parentheses
+   () function {}
+
+   // change `function` to `=>`
+   () => {}
+   
+   Those parentheses are the same old function parentheses and you can think of them as your guide. 
+   The braces {} still contain the contents of the function.
+
+   <a href="https://medium.com/@ExplosionPills/arrow-functions-as-simple-as-i-can-make-them-79d975a7883a">https://medium.com/@ExplosionPills/arrow-functions-as-simple-as-i-can-make-them-79d975a7883a</a>
+
+</pre>
+
+</body>
+</html>

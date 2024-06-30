@@ -208,6 +208,23 @@ function TodoList() {
       const hello = (val) => "Hello " + val;
       console.log( hello('[WORLD]') );
 
+      // Arrow function with no parameters
+      //    Function name: 'hello2'
+      //    Parameters: none
+      const hello2 = () => {
+         return "Hello World from hello2!";
+      }
+
+      console.log(hello2());
+
+      // arrow function with 2 parameters
+      const multiply = (a, b) => {
+         return a * b;
+      }
+
+      console.log('multiply(5, 10): ', multiply(5, 10));
+
+
       // arrow function with no parameters, we define a variable named 'greet'
       var greet = () =>  
       { 
@@ -319,6 +336,28 @@ function TodoList() {
 
    // Helper function (updateTask) - updates the `text` property of a task by `id` using the `setTasks` function.
    function updateTask(id, newText, formattedDateTime) {
+      // tasks.map() returns the tasks array with a task with an updated completed property
+      // so we will save the mapped array to a new array with the correct/current`completed` property 
+      const updatedTasksArray = tasks.map(task => {
+         if (task.id === id) {
+            return { ...task, text: newText, duedate: formattedDateTime };
+         } else {
+            return task;
+         }
+      });
+      
+      // console.log('tasks array value (BAD completed):', tasks );
+      // console.log('updated tasks array after array map (GOOD completed?):', updatedTasksArray );
+
+      setTasks(updatedTasksArray);
+
+      // update localStorage after marking item completed
+      const completedTasksList = JSON.stringify(updatedTasksArray);
+      localStorage.setItem('tasks', completedTasksList);
+      
+      /*
+      // another instance like toggleCompleted() where using the map() function inside of setTasks()
+      // doesn't pass the current state of tasks to the setTasks() function
       setTasks(
          tasks.map(task => {
             if (task.id === id) {
@@ -332,6 +371,7 @@ function TodoList() {
       // update localStorage after updating item
       const updatedTasksList = JSON.stringify(tasks);
       localStorage.setItem('tasks', updatedTasksList);
+      */
    }
 
    // Helper function - updates the `filter` state variable with the current value of the filter todo select menu
