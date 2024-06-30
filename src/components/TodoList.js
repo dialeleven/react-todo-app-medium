@@ -145,7 +145,8 @@ function TodoList() {
    // Helper function (toggleCompleted) - toggles the `completed` property of a task by `id` using the `setTasks` function.
    function toggleCompleted(id)
    {
-      // this doesn't work as expected to save the completed task in local storage
+      // This works without using LocalStorage, but when we toggle an item, 
+      // it's not saved to LocalStorage without using a callback function.
       /*
       setTasks(
          tasks.map(task => {
@@ -156,28 +157,119 @@ function TodoList() {
             }
          })
       );
+
+      // trying to update localStorage after marking item completed which will not work
+      const updatedTasksList = JSON.stringify(tasks);
+      localStorage.setItem('tasks', updatedTasksList);
+      */
+
+      /*
+      We need a version of this function that uses LocalStorage and a callback function.
+      */
+      // const hello = (val) => "Hello " + val;
+      // alert( hello('[WORLD]') );
+      setTasks(
+         (oldTasks) => {
+            const updatedTasks = oldTasks.map(task => {
+               if (task.id === id) {
+                  return { ...task, completed: !task.completed };
+               } else {
+                  return task;
+               }
+            }) // end array map
+
+            // update localStorage after marking item completed
+            const completedTasksList = JSON.stringify(updatedTasks);
+            localStorage.setItem('tasks', completedTasksList);
+            
+            // Return the updated tasks array to set it as the new state
+            return updatedTasks;
+         }
+         
+      );
+      return;
+
+
+      setTasks(
+         // `prevTasks` is the parameter of an anonymous function (arrow function) passed to `setTasks`
+         (prevTasks) => {
+            // Assign updated tasks (updatedTasks) from the current state of tasks (prevTasks)
+            // that uses the `map` function to iterate through each task in the `tasks` array
+            // and mark the current task as completed if the id matches the id toggled.
+            const updatedTasks = prevTasks.map(task => {
+               if (task.id === id) {
+                  return { ...task, completed: !task.completed };
+               } else {
+                  return task;
+               }
+            }); // end array map
+
+            //console.log('updatedTasks: ', updatedTasks);
+
+            // update localStorage after marking item completed
+            const completedTasksList = JSON.stringify(updatedTasks);
+            localStorage.setItem('tasks', completedTasksList);
+
+            const storedTasks = localStorage.getItem('tasks');
+            if (storedTasks) {
+               console.log(JSON.parse(storedTasks));
+            }
+
+            // Return the updated tasks array to set it as the new state
+            return updatedTasks;
+         }
+      );
+      
+      return;
+
+      // console.log(tasks);
+
+      /*
+      // The following doesn't work on its own like with deleteTask() because it doesn't use a callback function.
+
+      // update localStorage after marking item completed
+      const updatedTasksList = JSON.stringify(tasks);
+      localStorage.setItem('tasks', updatedTasksList);
       */
      
+
       /*
       Update the `tasks` array using the `setTasks` function.
       
-      The state update function (setTasks) is called with a callback function that 
-      receives the previous state of the `tasks` array (prevTasks). This callback 
-      needs to return the new state, which setTasks will use to update the component's state.
+      1. State Snapshot (prevTasks): prevTasks contains the current tasks array when setTasks is called.
+
+      2. Updating Tasks: Using map, you create updatedTasks, modifying the 
+         task with the specified id to toggle its completed status.
+      
+      3. Local Storage Update: Convert updatedTasks to a JSON string (updatedTasksList) and store it in localStorage.
+
+      4. Returning Updated State: Finally, updatedTasks is returned from the function, setting it as the new state for tasks.
       */
-      // ? arrow function version
-      setTasks(prevTasks => {
-         const updatedTasks = prevTasks.map(task => {
-           if (task.id === id) {
-             return { ...task, completed: !task.completed };
-           } else {
-             return task;
-           }
+      // ? arrow function version using an anonymous function
+      setTasks(
+         // `prevTasks` is the parameter of an anonymous function (arrow function) passed to `setTasks`
+         (prevTasks) => {
+            // Assign updated tasks (updatedTasks) from the current state of tasks (prevTasks)
+            // that uses the `map` function to iterate through each task in the `tasks` array
+            // and mark the current task as completed if the id matches the id toggled.
+            const updatedTasks = prevTasks.map(task => {
+            if (task.id === id) {
+               return { ...task, completed: !task.completed };
+            } else {
+               return task;
+            }
          });
+
+         //console.log('updatedTasks: ', updatedTasks);
 
          // update localStorage after marking item completed
          const completedTasksList = JSON.stringify(updatedTasks);
          localStorage.setItem('tasks', completedTasksList);
+
+         const storedTasks = localStorage.getItem('tasks');
+         if (storedTasks) {
+            console.log(JSON.parse(storedTasks));
+         }
 
          // Return the updated tasks array to set it as the new state
          return updatedTasks;
