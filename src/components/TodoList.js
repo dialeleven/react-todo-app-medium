@@ -163,6 +163,42 @@ function TodoList() {
       localStorage.setItem('tasks', updatedTasksList);
       */
 
+      // tasks.map() returns the tasks array with a task with an updated completed property
+      // so we will save the mapped array to a new const value
+      const updatedTasksArray = tasks.map(task => {
+         if (task.id === id) {
+            return { ...task, completed: !task.completed };
+         } else {
+            return task;
+         }
+      });
+      
+      // console.log('tasks array value (BAD completed):', tasks );
+      // console.log('updated tasks array after array map (GOOD completed?):', updatedTasksArray );
+
+      setTasks(updatedTasksArray);
+
+      // update localStorage after marking item completed
+      const completedTasksList = JSON.stringify(updatedTasksArray);
+      localStorage.setItem('tasks', completedTasksList);
+   }
+   
+   
+   function toggleCompletedCallback(id) {
+      /*
+      Callback functions can be a bit confusing for people who aren't familiar with ES6.
+      Let's simplify things.
+      */
+
+      // we need to return the updated tasks array after using the map() function to setTasks()
+      //setTasks();
+
+      // first a simple callback function
+      const hello = (val) => "Hello " + val;
+
+
+      
+
       /*
       We need a version of this function that uses LocalStorage and a callback function.
       */
@@ -222,15 +258,6 @@ function TodoList() {
       
       return;
 
-      // console.log(tasks);
-
-      /*
-      // The following doesn't work on its own like with deleteTask() because it doesn't use a callback function.
-
-      // update localStorage after marking item completed
-      const updatedTasksList = JSON.stringify(tasks);
-      localStorage.setItem('tasks', updatedTasksList);
-      */
      
 
       /*
@@ -274,36 +301,6 @@ function TodoList() {
          // Return the updated tasks array to set it as the new state
          return updatedTasks;
       });
-
-      /*
-      Update the `tasks` array using the `setTasks` function.
-      
-      The state update function (setTasks) is called with a callback function that 
-      receives the previous state of the `tasks` array (prevTasks). This callback 
-      needs to return the new state, which setTasks will use to update the component's state.
-      */
-      // ? Old function() version syntax (harder to read when dealing with multiple callbacks)
-      /*
-      setTasks(function(prevTasks) {
-         // go through each item in the `tasks` array and check if the current id matched the id toggled
-         const updatedTasks = prevTasks.map(function(task) {
-            // match for current id and toggled id found so mark as completed
-            if (task.id === id) {
-               // return the current task object with the `completed` property toggled
-               return { ...task, completed: !task.completed };
-            } else {
-               return task;
-            }
-         });
-
-         // update localStorage after marking item completed
-         const completedTasksList = JSON.stringify(updatedTasks);
-         localStorage.setItem('tasks', completedTasksList);
-
-         // Return the updated tasks array to set it as the new state
-         return updatedTasks;
-      });
-      */
    }
 
    // Helper function (updateTask) - updates the `text` property of a task by `id` using the `setTasks` function.
