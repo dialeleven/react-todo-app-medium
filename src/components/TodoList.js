@@ -169,7 +169,7 @@ function TodoList() {
       localStorage.setItem('tasks', updatedTasksList);
    }
 
-   
+
    // Helper function (toggleCompleted) - toggles the `completed` property of a task by `id` using the `setTasks` function.
    function toggleCompleted(id)
    {
@@ -194,7 +194,7 @@ function TodoList() {
    }
    
    
-   function toggleCompletedCallback(id) {
+   function toggleCompletedAnonFunc(id) {
       /*
       Callback functions can be a bit confusing for people who aren't familiar with ES6.
       Let's clarify what's going on with some callback function examples below:
@@ -208,12 +208,13 @@ function TodoList() {
       const hello = (val) => "Hello " + val;
       console.log( hello('[WORLD]') );
 
-      // arrow function with no parameters
+      // arrow function with no parameters, we define a variable named 'greet'
       var greet = () =>  
       { 
          console.log("An anonymous arrow function named 'greet' with no parameters"); 
       }
 
+      // call the function using the variable name 'greet'
       greet(); 
 
       //  arrow function with a parameter
@@ -269,7 +270,7 @@ function TodoList() {
       return;
    }
 
-   function toggleCompletedCallbackOld(id) {
+   function toggleCompletedAnonFuncOld(id) {
       /*
       Update the `tasks` array using the `setTasks` function.
       
@@ -419,7 +420,7 @@ function TodoList() {
                      key={task.id}
                      task={task}
                      deleteTask={deleteTask}
-                     toggleCompleted={toggleCompletedCallback}
+                     toggleCompleted={toggleCompletedAnonFunc}
                      updateTask={updateTask}
                      editItemModal={editItemModal}
                   />
