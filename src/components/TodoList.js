@@ -142,12 +142,13 @@ function TodoList() {
       localStorage.setItem('tasks', updatedTasksList);
    }
 
+
    // Helper function (toggleCompleted) - toggles the `completed` property of a task by `id` using the `setTasks` function.
-   function toggleCompleted(id)
+   function toggleCompletedOld(id)
    {
       // This works without using LocalStorage, but when we toggle an item, 
-      // it's not saved to LocalStorage without using a callback function.
-      /*
+      // the tasks array isn't updated using setTasks() due to looping through
+      // the array
       setTasks(
          tasks.map(task => {
             if (task.id === id) {
@@ -158,13 +159,22 @@ function TodoList() {
          })
       );
 
+      // When viewing the tasks array in the console, we can see the toggled task value
+      // is not updated in the array with the correct value. If we click the toggle again
+      // the completed property does change, but not the correct value again.
+      console.log('tasks array in toggleCompletedOld', tasks);
+
       // trying to update localStorage after marking item completed which will not work
       const updatedTasksList = JSON.stringify(tasks);
       localStorage.setItem('tasks', updatedTasksList);
-      */
+   }
 
+   
+   // Helper function (toggleCompleted) - toggles the `completed` property of a task by `id` using the `setTasks` function.
+   function toggleCompleted(id)
+   {
       // tasks.map() returns the tasks array with a task with an updated completed property
-      // so we will save the mapped array to a new const value
+      // so we will save the mapped array to a new array with the correct/current`completed` property 
       const updatedTasksArray = tasks.map(task => {
          if (task.id === id) {
             return { ...task, completed: !task.completed };
@@ -187,79 +197,79 @@ function TodoList() {
    function toggleCompletedCallback(id) {
       /*
       Callback functions can be a bit confusing for people who aren't familiar with ES6.
-      Let's simplify things.
+      Let's clarify what's going on with some callback function examples below:
       */
-
-      // we need to return the updated tasks array after using the map() function to setTasks()
-      //setTasks();
-
-      // first a simple callback function
-      const hello = (val) => "Hello " + val;
-
-
-      
 
       /*
-      We need a version of this function that uses LocalStorage and a callback function.
+      First a simple callback function (hello) with a parameter (val)
+         - Function name: 'hello'
+         - Argument: (val)
       */
-      // const hello = (val) => "Hello " + val;
-      // alert( hello('[WORLD]') );
-      setTasks(
-         (oldTasks) => {
-            const updatedTasks = oldTasks.map(task => {
-               if (task.id === id) {
-                  return { ...task, completed: !task.completed };
-               } else {
-                  return task;
-               }
-            }) // end array map
+      const hello = (val) => "Hello " + val;
+      console.log( hello('[WORLD]') );
 
-            // update localStorage after marking item completed
-            const completedTasksList = JSON.stringify(updatedTasks);
-            localStorage.setItem('tasks', completedTasksList);
-            
-            // Return the updated tasks array to set it as the new state
-            return updatedTasks;
+      // arrow function with no parameters
+      var greet = () =>  
+      { 
+         console.log("An anonymous arrow function named 'greet' with no parameters"); 
+      }
+
+      greet(); 
+
+      //  arrow function with a parameter
+      var greet2 = (name) =>  
+      { 
+         console.log("An anonymous arrow function named 'greet' with a parameter named 'name'. Hi, " + name); 
+      }
+
+      greet2('Sally'); 
+
+      // simple anonymous function which is invoked (called) using the variable name
+      const x = function (a, b) {return a * b};
+      console.log( x(2, 10) );
+
+      /*
+      A self-executing anonymous function (without the name itself) and will see how we may declare it as well as how we may call it in order to print the resultant value (ref: https://www.geeksforgeeks.org/javascript-anonymous-functions/).
+
+      We're going to use this as our base to within setTasks() after the example below.
+
+      We don't need all the extra parentheses here. What we do need is:
+
+      () => {
+         // your code here
+
+         return yourReturnValue;
          }
-         
-      );
-      return;
-
-
-      setTasks(
-         // `prevTasks` is the parameter of an anonymous function (arrow function) passed to `setTasks`
-         (prevTasks) => {
-            // Assign updated tasks (updatedTasks) from the current state of tasks (prevTasks)
-            // that uses the `map` function to iterate through each task in the `tasks` array
-            // and mark the current task as completed if the id matches the id toggled.
-            const updatedTasks = prevTasks.map(task => {
-               if (task.id === id) {
-                  return { ...task, completed: !task.completed };
-               } else {
-                  return task;
-               }
-            }); // end array map
-
-            //console.log('updatedTasks: ', updatedTasks);
-
-            // update localStorage after marking item completed
-            const completedTasksList = JSON.stringify(updatedTasks);
-            localStorage.setItem('tasks', completedTasksList);
-
-            const storedTasks = localStorage.getItem('tasks');
-            if (storedTasks) {
-               console.log(JSON.parse(storedTasks));
-            }
-
-            // Return the updated tasks array to set it as the new state
-            return updatedTasks;
-         }
-      );
+      */
+      (() => { 
+         console.log("a self-executing anonymous function"); 
+      })();
       
+
+
+      setTasks(
+         // anonymous function in order to `return` the `updatedTasksArray` within the setTasks() function
+         () => {
+            // store the most recent tasks array after calling the map() function otherwise
+            // we get a stale value for the completed property being toggled
+            const updatedTasksArray = tasks.map(task => {
+               if (task.id === id) {
+                  return { ...task, completed: !task.completed };
+               } else {
+                  return task;
+               }
+            })
+
+            // update localStorage after marking item completed
+            const completedTasksList = JSON.stringify(updatedTasksArray);
+            localStorage.setItem('tasks', completedTasksList);
+
+            return updatedTasksArray;
+      });
       return;
+   }
 
-     
-
+   function toggleCompletedCallbackOld(id) {
       /*
       Update the `tasks` array using the `setTasks` function.
       
@@ -293,10 +303,13 @@ function TodoList() {
          const completedTasksList = JSON.stringify(updatedTasks);
          localStorage.setItem('tasks', completedTasksList);
 
+         /*
+         // debugging output
          const storedTasks = localStorage.getItem('tasks');
          if (storedTasks) {
             console.log(JSON.parse(storedTasks));
          }
+         */
 
          // Return the updated tasks array to set it as the new state
          return updatedTasks;
@@ -406,7 +419,7 @@ function TodoList() {
                      key={task.id}
                      task={task}
                      deleteTask={deleteTask}
-                     toggleCompleted={toggleCompleted}
+                     toggleCompleted={toggleCompletedCallback}
                      updateTask={updateTask}
                      editItemModal={editItemModal}
                   />
