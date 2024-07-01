@@ -143,6 +143,8 @@ function TodoList() {
    }
 
 
+/* eslint-disable no-unused-vars */
+
    // Helper function (toggleCompleted) - toggles the `completed` property of a task by `id` using the `setTasks` function.
    function toggleCompletedOld(id)
    {
@@ -192,7 +194,7 @@ function TodoList() {
       const completedTasksList = JSON.stringify(updatedTasksArray);
       localStorage.setItem('tasks', completedTasksList);
    }
-   
+/* eslint-enable no-unused-vars */
    
    function toggleCompletedAnonFunc(id) {
       /*
@@ -287,6 +289,8 @@ function TodoList() {
       return;
    }
 
+/* eslint-disable no-unused-vars */
+
    function toggleCompletedAnonFuncOld(id) {
       /*
       Update the `tasks` array using the `setTasks` function.
@@ -333,6 +337,8 @@ function TodoList() {
          return updatedTasks;
       });
    }
+/* eslint-enable no-unused-vars */
+
 
    // Helper function (updateTask) - updates the `text` property of a task by `id` using the `setTasks` function.
    function updateTask(id, newText, formattedDateTime) {
