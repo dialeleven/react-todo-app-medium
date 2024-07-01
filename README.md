@@ -14,6 +14,8 @@ The app build is hosted on Netlify at https://react-todo-app8.netlify.app to int
 
 Netlify has a nice Continuous Deployment (CD) feature, so when your GitHub repository changes are pushed, Netlify automatically builds and deploys your site to their CDN (Content Delivery Network). Netlify's CD includes automatic builds, previews for pull requests, instant cache invalidation, and continuous delivery to production. So, Netlify can be a part of a CI/CD pipeline which is a great way to get started with CI/CD if you haven't used it before!
 
+NOTE: The Starter plan (free) doesn't include email notifications, so pay attention to the deploys log in your Netlify account if the build fails because of various reasons (e.g. ESLint warnings). Just in case you're expecting your local version to be live on Netlify and don't see your changes take effect.
+
 ## Screenshot
 ![TODO App Screenshot](https://github.com/dialeleven/react-todo-app-medium/blob/main/public/assets/screenshot_todo_app.png?raw=true)
 
