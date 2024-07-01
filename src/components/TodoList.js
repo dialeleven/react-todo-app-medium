@@ -194,12 +194,10 @@ function TodoList() {
       const completedTasksList = JSON.stringify(updatedTasksArray);
       localStorage.setItem('tasks', completedTasksList);
    }
-/* eslint-enable no-unused-vars */
    
-   function toggleCompletedAnonFunc(id) {
+   function arrowAndAnonFunctionExamples() {
       /*
-      Arrow/anonymous functions can be a bit confusing for people who aren't familiar with ES6.
-      Let's clarify what's going on with some callback function examples below:
+      Some arrow and anonymous function examples
       */
 
       /*
@@ -250,23 +248,44 @@ function TodoList() {
 
       /*
       A self-executing anonymous function (without the name itself) and will see how we may declare it as well as how we may call it in order to print the resultant value (ref: https://www.geeksforgeeks.org/javascript-anonymous-functions/).
+      */
+      (() => { 
+         console.log("a self-executing anonymous function"); 
+      })();
 
-      We're going to use this as our base to within setTasks() after the example below.
+      /*
+      Now with the above example in mind, now...
 
-      We don't need all the extra parentheses here. What we do need is:
+      * We're going to use an anonymous function in setTasks() like toggleCompletedAnonFunc() for
+      * some of the more tricky cases like ones that use the map() function.
+
+      We don't need all the extra parentheses like above. What we do need is:
 
       () => {
          // your code here
 
          return yourReturnValue;
+      }
+
+      For our purposes, we will use the anonymous function like above in setTasks() in the
+      function toggleCompletedAnonFunc().
+
+      setTasks(
+         () => {
+            // your code here
+            return yourReturnValue;
          }
+      );
       */
-      (() => { 
-         console.log("a self-executing anonymous function"); 
-      })();
-      
+   }
 
+/* eslint-enable no-unused-vars */
+   function toggleCompletedAnonFunc(id) {
+      /*
+      Arrow/anonymous functions can be a bit confusing for people who aren't familiar with ES6.
+      */
 
+      // update `tasks` state using the `setTasks` function
       setTasks(
          // anonymous function in order to `return` the `updatedTasksArray` within the setTasks() function
          () => {
@@ -278,7 +297,7 @@ function TodoList() {
                } else {
                   return task;
                }
-            })
+            });
 
             // update localStorage after marking item completed
             const completedTasksList = JSON.stringify(updatedTasksArray);
@@ -286,7 +305,6 @@ function TodoList() {
 
             return updatedTasksArray;
       });
-      return;
    }
 
 /* eslint-disable no-unused-vars */
