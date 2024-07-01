@@ -1,4 +1,4 @@
-# TODO Tutorial 
+# React Todo App
 
 Built using tutorial sources:
 - https://medium.com/@worachote/building-a-todo-list-app-with-reactjs-a-step-by-step-guide-2c58b9b6c0f5
