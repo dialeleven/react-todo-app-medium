@@ -205,7 +205,7 @@ function TodoList() {
       /*
       First a simple callback function (hello) with a parameter (val)
          - Function name: 'hello'
-         - Argument: (val)
+         - Parameter: (val)
       */
       const hello = (val) => "Hello " + val;
       console.log( hello('[WORLD]') );
