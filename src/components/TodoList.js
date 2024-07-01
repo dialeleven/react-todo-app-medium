@@ -31,7 +31,7 @@ function TodoList() {
    const [defaultTasks] = useState([
       {
          id: 1,
-         text: "Edit item  - watch out for long text lines that wrap)",
+         text: "Edit item  - watch out for long text lines that wrap",
          duedate: "2099-01-01 12:00",
          completed: true
       },
