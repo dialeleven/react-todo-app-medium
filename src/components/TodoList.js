@@ -198,7 +198,7 @@ function TodoList() {
    
    function toggleCompletedAnonFunc(id) {
       /*
-      Callback functions can be a bit confusing for people who aren't familiar with ES6.
+      Arrow/anonymous functions can be a bit confusing for people who aren't familiar with ES6.
       Let's clarify what's going on with some callback function examples below:
       */
 
