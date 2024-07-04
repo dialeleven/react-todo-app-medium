@@ -40,7 +40,7 @@ h1 {
 }
 
 .todo-text {
-   cursor: pointer;
+   /* cursor: pointer; */
 }
 
 .todo-list {
