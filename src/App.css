@@ -13,16 +13,58 @@ input[type="checkbox"] {
    cursor: pointer;
 }
 
+
+.container {
+   max-width: 500px;
+   /* border: 3px solid #000; */
+   margin: auto; /* center the container horizontally */
+}
+
+.header {
+   width: 100%;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding-bottom: 10px;
+   margin: 0 auto;
+   /* border: 3px solid #be02f2; */
+}
+
+.todo-list {
+   margin: 0 auto;
+   padding-bottom: 30px;
+}
+
+
+.todo-item {
+   display: flex;
+   align-items: center;
+   padding: 12px;
+   background-color: #f8f9fa;
+   color: #333;
+   border-radius: 4px;
+   margin-bottom: 8px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ }
+
+
 .top-add-todo-button {
    background-color: #007bff;
    color: white;
    border: none;
    padding: 8px 10px;
-   margin-left: 25px;
    border-radius: 4px;
    cursor: pointer;
    transition: background-color 0.3s ease;
 }
+
+.filter-select {
+   padding: 7px 3px;
+   border-radius: 4px;
+   border: 1px solid #ccc;
+   margin-left: auto;
+}
+
 
 h1 {
    max-width: 400px;
@@ -42,27 +84,20 @@ h1 {
 .todo-text {
    /* cursor: pointer; */
 }
+ 
 
-.todo-list {
-   max-width: 400px;
-   margin: 0 auto;
-   padding-bottom: 30px;
+ 
+ .drag-handle {
+   cursor: grab;
+   padding-right: 5px;
+   margin-right: 5px;
 }
  
-.todo-item {
+ .todo-content {
+   display: flex;
    align-items: center;
-   justify-content: space-between;
-   background-color: #f8f9fa;
-   color: #333;
-   padding: 12px;
-   border-radius: 4px;
-   margin-bottom: 8px;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    width: 100%;
-   max-width: 100%;
 }
-
-
 
 .todo-content:has(:checked) .todo-text {
    color: #666;
@@ -131,19 +166,6 @@ h1 {
    margin-right: 12px;
 }
 
-.container {
-   width: 100%;
-}
-
-.header {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   padding-bottom: 10px;
-   max-width: 450px;
-   margin: 0 auto;
-}
-
 .new-todo-input {
    width: 100%;
    max-width: 400px;
@@ -154,19 +176,12 @@ h1 {
    margin-bottom: 20px;
 }
 
-.filter-select {
-   padding: 8px;
-   border-radius: 4px;
-   border: 1px solid #ccc;
-   margin-left: auto;
-}
-
 
 .footerButtonContainer {
    /* border: 1px solid #000; */
    display: flex;
    justify-content: space-between;
-   width: 106%; /* Ensure the container takes the full width */
+    /* Ensure the container takes the full width */
 }
  
 .add-todo-button-footer, .load-default-todos-button {
