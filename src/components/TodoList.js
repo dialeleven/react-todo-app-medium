@@ -58,6 +58,13 @@ function TodoList() {
          position: 2
       },
       {
+         id: 3,
+         text: "Redux state management(?)",
+         duedate: "",
+         completed: false,
+         position: 3
+      },
+      {
          id: 4,
          text: "Store todo list in local storage",
          completed: true,
