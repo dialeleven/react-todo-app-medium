@@ -31,9 +31,9 @@ NOTE: The Starter plan (free) doesn't include email notifications, so pay attent
 - [x] [Tasks todo vs completed summary](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#The-TODOHero-Component)
 - [x] [Store todo list in local storage](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#How-to-Persist-the-Todo-Data-to-localStorage)
 - [x] Deploy project online (e.g Netlify)
+- [x] Reorder with drag and drop ([dnd kit](https://dndkit.com/)) - install using ```npm install @dnd-kit/core @dnd-kit/sortable @dnd-kit/modifiers```
 
 **TODO - Features To Add**
-- [ ] Reorder with drag and drop
 - [ ] [Redux](https://redux.js.org/) state management(?)
 
 # Getting Started with Create React App
