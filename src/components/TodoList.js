@@ -3,6 +3,20 @@ import TodoItem from './TodoItem';
 import TodoAddItemModal from './TodoAddItemModal';
 import TodoHero from "./TodoHero";
 
+import {
+   DndContext,
+   closestCenter,
+ } from '@dnd-kit/core';
+ import {
+   arrayMove,
+   SortableContext,
+   // sortableKeyboardCoordinates,
+   // useSortable,
+   verticalListSortingStrategy,
+ } from '@dnd-kit/sortable';
+ //import { CSS } from '@dnd-kit/utilities';
+ import { restrictToVerticalAxis } from '@dnd-kit/modifiers';
+
 
 // Create context for the tasks to be used in child components
 const TodoListContext = createContext();
@@ -33,21 +47,69 @@ function TodoList() {
          id: 1,
          text: "Edit item  - watch out for long text lines that wrap",
          duedate: "2099-01-01 12:00",
-         completed: true
+         completed: true,
+         position: 1
       },
       {
          id: 2,
          text: "Reorder with drag and drop",
          duedate: "2024-12-31 09:00",
-         completed: false
+         completed: false,
+         position: 2
       },
       {
          id: 4,
          text: "Store todo list in local storage",
-         completed: true
+         completed: true,
+         position: 4
       }
    ]);
+
+
+   // handle dnd kit drag end event when reordering and update the task positions
+   const handleDragEnd = (event) => {
+      const { active, over } = event;
    
+      // Check if 'over' is not null before proceeding
+      if (over && active.id !== over.id) {
+         setTasks((tasks) => {
+            const oldIndex = tasks.findIndex(task => task.id === active.id);
+            const newIndex = tasks.findIndex(task => task.id === over.id);
+
+            // Move the task within the array
+            const reorderedTasks = arrayMove(tasks, oldIndex, newIndex);
+
+            // Update the position based on the new index
+            const updatedTasks = reorderedTasks.map((task, index) => ({
+               ...task,
+               position: index + 1,
+            }));
+
+            // Update localStorage with the new positions
+            localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+
+            return updatedTasks;
+         });
+      }
+   };
+
+/* eslint-disable no-unused-vars */
+   const handleDragEndORIGINAL = (event) => {
+      const { active, over } = event;
+   
+      // Check if 'over' is not null before proceeding
+      if (over && active.id !== over.id) {
+         setTasks((tasks) => {
+            const oldIndex = tasks.findIndex(task => task.id === active.id);
+            const newIndex = tasks.findIndex(task => task.id === over.id);
+
+            console.table('tasks after:', tasks);
+   
+            return arrayMove(tasks, oldIndex, newIndex);
+         });
+      }
+   };
+/* eslint-enable no-unused-vars */
 
    // State variable 'filter' is used to store the current value of the task filter menu (default is 'All')
    const [filter, setFilter] = useState('All');
@@ -106,7 +168,9 @@ function TodoList() {
             id: Date.now(),
             text,
             duedate: dateTime,
-            completed: false
+            completed: false,
+            // get highest position + 1
+            position: tasks.reduce((maxPos, task) => (task.position > maxPos ? task.position : maxPos), 0) + 1
          };
 
          // update `tasks` state with new task
@@ -464,6 +528,11 @@ function TodoList() {
 
    return (
       <TodoListContext.Provider value={ tasks }>
+      <DndContext
+         collisionDetection={closestCenter}
+         onDragEnd={handleDragEnd}
+         modifiers={[restrictToVerticalAxis]}
+         >
       <div className="container">
          <div className="header">
             <button className="top-add-todo-button" onClick={handleShow}>Add Todo</button>
@@ -479,6 +548,10 @@ function TodoList() {
          
          
          <div className="todo-list">
+         <SortableContext
+            items={tasks}
+            strategy={verticalListSortingStrategy}
+            >
             {getFilteredTasks().map(task => (
                   <TodoItem
                      key={task.id}
@@ -507,6 +580,7 @@ function TodoList() {
                   <button className="load-default-todos-button" onClick={() => loadDefaultTasks(defaultTasks)}>Load Default Tasks (Reset LocalStorage)</button>
                </div>
             </div>
+            </SortableContext>
          </div>
 
          {/* 
@@ -527,6 +601,7 @@ function TodoList() {
             currentTaskId={currentTaskId}
          />
       </div>
+      </DndContext>
       </TodoListContext.Provider>
    );
 }

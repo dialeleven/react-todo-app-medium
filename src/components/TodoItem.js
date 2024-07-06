@@ -1,7 +1,20 @@
 import React from 'react';
+import { useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
 
 
 function TodoItem({ task, deleteTask, toggleCompleted, updateTask, editItemModal }) {
+   // useSortable hook for dnd kit 
+   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({
+      id: task.id,
+   });
+
+   // style for dnd kit
+   const style = {
+      transform: CSS.Transform.toString(transform),
+      transition,
+   };
+
    // function to toggle the completion status of a todo item
    function handleChange() {
       toggleCompleted(task.id);
@@ -27,7 +40,8 @@ function TodoItem({ task, deleteTask, toggleCompleted, updateTask, editItemModal
    }
 
    return (
-      <div className="todo-item">
+      <div ref={setNodeRef} style={style} {...attributes}  className="todo-item">
+         <span {...listeners} className="drag-handle">☰</span>
          <div className="todo-content">
             <input type="checkbox" checked={task.completed} onChange={handleChange} />
             <div className="todo-text-container">
