@@ -7,7 +7,13 @@ Built using tutorial sources:
 
 The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. Additional functionality was developed with the aid of the "Master React" book (updating/editing a TODO item) and other online resources.
 
-This is a great project to get aquainted with how React works from working with components, JSX syntax, managing state (useState), various hooks (useEffect, useContext), and using the Context Provider to pass state down to child components (e.g. <TodoList /> (TodoList.js) `tasks` object passed down to the child <TodoAddItemModal /> (TodoAddItemModal.js) to access the `tasks` list object and filter out the selected task id when 'edit' is clicked).
+This is a great project to get aquainted with React by working with:
+- components
+- JSX syntax
+- managing state (useState)
+- hooks (useEffect, useContext)
+- Context Provider to pass state down to child components (e.g. <TodoList /> (TodoList.js) `tasks` object passed down to the child <TodoAddItemModal /> (TodoAddItemModal.js) to access the `tasks` list object and filter out the selected task id when 'edit' is clicked)
+- dnd kit for draggable/droppable/sortable hooks
 
 ## Live Demo
 The app build is hosted on Netlify at https://react-todo-app8.netlify.app to interact with.
@@ -31,9 +37,9 @@ NOTE: The Starter plan (free) doesn't include email notifications, so pay attent
 - [x] [Tasks todo vs completed summary](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#The-TODOHero-Component)
 - [x] [Store todo list in local storage](https://www.freecodecamp.org/news/build-a-todo-app-from-scratch-with-reactjs/#How-to-Persist-the-Todo-Data-to-localStorage)
 - [x] Deploy project online (e.g Netlify)
+- [x] Reorder with drag and drop ([dnd kit](https://dndkit.com/)) - install using ```npm install @dnd-kit/core @dnd-kit/sortable @dnd-kit/modifiers```
 
 **TODO - Features To Add**
-- [ ] Reorder with drag and drop
 - [ ] [Redux](https://redux.js.org/) state management(?)
 
 # Getting Started with Create React App
