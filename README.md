@@ -7,7 +7,7 @@ Built using tutorial sources:
 
 The Medium.com tutorial covers reading the TODO list, TODO items, creating a new TODO, and deleting a TODO. Additional functionality was developed with the aid of the "Master React" book (updating/editing a TODO item) and other online resources.
 
-This is a great project to get aquainted with how React works from working with:
+This is a great project to get aquainted with React by working with:
 - components
 - JSX syntax
 - managing state (useState)
