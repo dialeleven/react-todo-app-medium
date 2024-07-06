@@ -86,12 +86,23 @@ h1 {
 }
  
 
- 
+ /* Drag handle for dnd kit sortable */
 .drag-handle {
    cursor: grab;
    padding-right: 5px;
    margin-right: 5px;
+   touch-action: none;
 }
+
+/* Increase drag handle size on mobile devices */
+@media (max-width: 600px) {
+   .drag-handle {
+     padding-right: 15px; /* Increase padding for easier touch interaction */
+     margin-right: 10px; /* Increase margin if needed */
+     font-size: 1.5rem; /* Increase font size if there's text inside the handle */
+     touch-action: none;
+   }
+ }
  
 .todo-content {
    display: flex;
