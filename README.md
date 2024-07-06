@@ -15,6 +15,9 @@ This is a great project to get aquainted with React by working with:
 - Context Provider to pass state down to child components (e.g. <TodoList /> (TodoList.js) `tasks` object passed down to the child <TodoAddItemModal /> (TodoAddItemModal.js) to access the `tasks` list object and filter out the selected task id when 'edit' is clicked)
 - dnd kit for draggable/droppable/sortable hooks
 
+Additional feature(s):
+- The Todo App stores the todo items in the browser's localStorage for data persistence
+
 ## Live Demo
 The app build is hosted on Netlify at https://react-todo-app8.netlify.app to interact with.
 
